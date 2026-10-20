@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "node scripts/sync-project-reference.js",
+        "windows": "node .\\scripts\\sync-project-reference.js",
+        "timeout": 5
+      }
+    ]
+  }
+}

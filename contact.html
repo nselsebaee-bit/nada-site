@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="مساحة للتعاون وطرق التواصل مع مختبر ندى السباعي.">
+  <title>التعاون | مختبر ندى السباعي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+  <main class="wrap page-main contact-main">
+    <header class="page-intro">
+      <p class="eyebrow" data-copy="contactEyebrow"></p>
+      <h1 data-copy="contactTitle"></h1>
+      <p class="lead" data-copy="contactIntro"></p>
+    </header>
+    <div class="contact-cards" id="contact-cards"></div>
+    <section class="contact-form-section">
+      <div class="contact-form-intro">
+        <p class="eyebrow" data-copy="formEyebrow"></p>
+        <h2 data-copy="formTitle"></h2>
+        <p data-copy="formIntro"></p>
+        <p class="contact-form-note" data-copy="formSetupPending"></p>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <label for="contact-name" data-copy="formNameLabel"></label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="120">
+
+        <label for="contact-email" data-copy="formEmailLabel"></label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254">
+
+        <label for="contact-subject" data-copy="formSubjectLabel"></label>
+        <input id="contact-subject" name="subject" type="text" required maxlength="160">
+
+        <label for="contact-message" data-copy="formMessageLabel"></label>
+        <textarea id="contact-message" name="message" rows="6" required maxlength="5000"></textarea>
+
+        <button class="button button-primary" id="contact-submit" type="submit" data-copy="formSubmit"></button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="مقالات وأدلة عملية في العمليات، وتصميم التعلّم، والتوثيق البصري، والثقافة والإعلام.">
+  <title>مدونة | مختبر ندى السباعي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="articles">
+  <div id="site-header"></div>
+  <main class="wrap page-main">
+    <header class="page-intro">
+      <p class="eyebrow" data-copy="articlesEyebrow"></p>
+      <h1 data-copy="articlesTitle"></h1>
+      <p class="lead" data-copy="articlesIntro"></p>
+    </header>
+    <section class="section blog-section" aria-labelledby="blog-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" data-copy="blogEyebrow"></p>
+          <h2 id="blog-title" data-copy="blogTitle"></h2>
+          <p class="articles-section-intro" data-copy="blogIntro"></p>
+        </div>
+      </div>
+      <div id="blog-filters" class="blog-filters" role="group" aria-label="تصنيف المقالات"></div>
+      <div id="blog-posts" class="blog-post-grid"></div>
+    </section>
+    <aside class="newsletter-panel" aria-labelledby="newsletter-title">
+      <div class="newsletter-mark" aria-hidden="true">N</div>
+      <div class="newsletter-copy">
+        <p class="eyebrow" data-copy="newsletterEyebrow"></p>
+        <h2 id="newsletter-title" data-copy="newsletterTitle"></h2>
+        <p data-copy="newsletterText"></p>
+      </div>
+      <a class="button button-primary is-hidden" id="substack-link" target="_blank" rel="noopener noreferrer" data-copy="newsletterCta"></a>
+    </aside>
+    <section class="section articles-published-section" aria-labelledby="published-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" data-copy="publishedEyebrow"></p>
+          <h2 id="published-title" data-copy="publishedTitle"></h2>
+          <p class="articles-section-intro" data-copy="publishedIntro"></p>
+        </div>
+      </div>
+      <div id="published-list" class="published-work-grid"></div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
