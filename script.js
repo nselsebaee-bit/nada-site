@@ -74,10 +74,15 @@
     document.documentElement.lang = language;
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
     document.documentElement.style.setProperty("--content-direction", isArabic ? "rtl" : "ltr");
+    var requestedProjectId = new URLSearchParams(window.location.search).get("id");
+    var selectedProject = page === "project" ? SITE.projects.find(function (item) {
+      return item.id === requestedProjectId;
+    }) : null;
+    var localizedSelectedProject = selectedProject ? localizedProject(selectedProject) : null;
     var pageTitles = {
-      home: SITE.brand[language],
+      home: SITE.brand[language] + " | " + (isArabic ? "الأعمال والمشاريع" : "Portfolio & Selected Work"),
       archive: isArabic ? "أرشيف الخبرات والمشاريع | " + SITE.brand[language] : "Experience Archive | " + SITE.brand[language],
-      project: isArabic ? "تفاصيل المشروع | " + SITE.brand[language] : "Project Details | " + SITE.brand[language],
+      project: localizedSelectedProject ? localizedSelectedProject.title + " | " + SITE.brand[language] : copy.notFoundTitle + " | " + SITE.brand[language],
       articles: isArabic ? "المدونة | " + SITE.brand[language] : "Blog | " + SITE.brand[language],
       article: articleContent ? articleContent.title + " | " + SITE.brand[language] : copy.notFoundTitle + " | " + SITE.brand[language],
       studio: copy.studioTitle + " | " + SITE.brand[language],
@@ -86,16 +91,67 @@
       contact: isArabic ? "التعاون | " + SITE.brand[language] : "Collaborate | " + SITE.brand[language]
     };
     document.title = pageTitles[page] || SITE.brand[language];
-    if (page === "about" || page === "services" || page === "articles" || page === "article" || page === "studio") {
-      var description = document.querySelector('meta[name="description"]');
-      if (description) {
-        if (page === "about") description.content = aboutContent.metaDescription;
-        else if (page === "services") description.content = serviceContent.pageDescription;
-        else if (page === "articles") description.content = copy.articlesDescription;
-        else if (page === "article") description.content = articleContent ? articleContent.seoDescription : copy.notFoundText;
-        else description.content = copy.studioIntro;
-      }
+    var pageDescriptions = {
+      home: copy.hero.intro,
+      archive: copy.archiveIntro,
+      project: localizedSelectedProject ? localizedSelectedProject.summary : copy.notFoundText,
+      articles: copy.articlesDescription,
+      article: articleContent ? articleContent.seoDescription : copy.notFoundText,
+      studio: copy.studioIntro,
+      services: serviceContent.pageDescription,
+      about: aboutContent.metaDescription,
+      contact: copy.contactIntro
+    };
+    var description = document.querySelector('meta[name="description"]');
+    if (!description) {
+      description = document.createElement("meta");
+      description.name = "description";
+      document.head.appendChild(description);
     }
+    description.content = pageDescriptions[page] || SITE.brand[language];
+
+    var canonicalPaths = {
+      home: "/",
+      archive: "/archive.html",
+      project: "/project.html",
+      articles: "/articles.html",
+      article: window.location.pathname,
+      studio: "/studio.html",
+      services: "/services.html",
+      about: "/about.html",
+      contact: "/contact.html"
+    };
+    var canonicalUrl = new URL(canonicalPaths[page] || "/", SITE.origin);
+    if (selectedProject) canonicalUrl.searchParams.set("id", selectedProject.id);
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      document.head.appendChild(canonical);
+    }
+    canonical.href = canonicalUrl.href;
+
+    [
+      { selector: 'meta[property="og:title"]', key: "property", name: "og:title", value: document.title },
+      { selector: 'meta[property="og:description"]', key: "property", name: "og:description", value: description.content },
+      { selector: 'meta[property="og:url"]', key: "property", name: "og:url", value: canonicalUrl.href },
+      { selector: 'meta[property="og:type"]', key: "property", name: "og:type", value: "website" },
+      { selector: 'meta[property="og:site_name"]', key: "property", name: "og:site_name", value: SITE.brand[language] },
+      { selector: 'meta[property="og:locale"]', key: "property", name: "og:locale", value: isArabic ? "ar_EG" : "en_US" },
+      { selector: 'meta[property="og:image"]', key: "property", name: "og:image", value: new URL("assets/images/projects/assetsimagesnada-portrait.webp", SITE.origin + "/").href },
+      { selector: 'meta[name="twitter:card"]', key: "name", name: "twitter:card", value: "summary_large_image" },
+      { selector: 'meta[name="twitter:title"]', key: "name", name: "twitter:title", value: document.title },
+      { selector: 'meta[name="twitter:description"]', key: "name", name: "twitter:description", value: description.content },
+      { selector: 'meta[name="twitter:image"]', key: "name", name: "twitter:image", value: new URL("assets/images/projects/assetsimagesnada-portrait.webp", SITE.origin + "/").href }
+    ].forEach(function (item) {
+      var node = document.querySelector(item.selector);
+      if (!node) {
+        node = document.createElement("meta");
+        node.setAttribute(item.key, item.name);
+        document.head.appendChild(node);
+      }
+      node.content = item.value;
+    });
     document.querySelectorAll("[data-copy]").forEach(function (node) {
       var value = copy[node.getAttribute("data-copy")];
       if (value !== undefined) node.textContent = value;
@@ -115,6 +171,13 @@
     document.querySelectorAll("[data-about]").forEach(function (node) {
       var value = aboutContent[node.getAttribute("data-about")];
       if (value !== undefined) node.textContent = value;
+    });
+    document.querySelectorAll("[data-about-aria]").forEach(function (node) {
+      var value = aboutContent[node.getAttribute("data-about-aria")];
+      if (value !== undefined) {
+        if (node.tagName === "IMG") node.alt = value;
+        else node.setAttribute("aria-label", value);
+      }
     });
     document.querySelectorAll("[data-service]").forEach(function (node) {
       var value = serviceContent[node.getAttribute("data-service")];
@@ -265,6 +328,7 @@
       title: translated.title || project.title,
       summary: translated.summary || project.summary,
       image: project.image,
+      imageType: project.imageType || "",
       gallery: (project.gallery || []).map(function (media) {
         return {
           src: media.src,
@@ -288,18 +352,19 @@
     var card = element("article", "project-card");
     var link = element("a", "project-card-link");
     link.href = "project.html?id=" + encodeURIComponent(project.id);
-    var image = element("div", "card-image media-placeholder");
-    image.setAttribute("aria-hidden", "true");
-    image.setAttribute("data-reveal", "image");
     if (project.image) {
+      var image = element("div", "card-image media-placeholder");
+      image.setAttribute("aria-hidden", "true");
+      image.setAttribute("data-reveal", "image");
+      if (item.imageType === "document") image.classList.add("card-image-document");
       var photo = element("img", "card-photo");
       photo.src = project.image;
-      photo.alt = item.title;
+      photo.alt = "";
       photo.loading = "lazy";
       photo.decoding = "async";
+      if (item.imageType === "document") photo.classList.add("card-photo-contain");
       image.appendChild(photo);
-    } else {
-      image.appendChild(element("span", "placeholder-caption", copy.imageLater));
+      link.appendChild(image);
     }
     var meta = element("div", "card-meta");
     meta.appendChild(element("span", "category-tag", categoryName(project.category)));
@@ -307,7 +372,6 @@
     var title = element("h3", "card-title", item.title);
     var summary = element("p", "card-summary", item.summary);
     var cta = element("span", "text-link card-cta", copy.openProject);
-    link.appendChild(image);
     link.appendChild(meta);
     link.appendChild(title);
     link.appendChild(summary);
@@ -338,7 +402,7 @@
     art.appendChild(element("span", "service-card-art-shape service-card-art-shape-two"));
     art.appendChild(element("span", "service-card-art-shape service-card-art-shape-three"));
     if (service.image) {
-      var serviceImage = element("img", "service-card-image");
+      var serviceImage = element("img", "service-card-image" + (service.imageFit === "contain" ? " is-contained" : ""));
       serviceImage.src = service.image;
       serviceImage.alt = "";
       serviceImage.loading = "lazy";
