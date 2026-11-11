@@ -139,8 +139,8 @@ var SITE = {
         projectsCta: "عرض أرشيف الخبرات",
         contactCta: "للتواصل والتعاون",
         proof: "أكثر من 11 عامًا من الخبرة المهنية منذ 2014",
-        portraitAlt: "مساحة صورة لندى السباعي ستضاف لاحقًا",
-        portraitCaption: "صورة شخصية — تُضاف لاحقًا",
+        portraitAlt: "صورة شخصية لندى السباعي",
+        portraitCaption: "ندى السباعي",
         statYears: "+11",
         statYearsLabel: "عامًا من الخبرة منذ 2014",
         statFields: "5",
@@ -262,8 +262,8 @@ var SITE = {
         projectsCta: "Browse the experience archive",
         contactCta: "Get in touch",
         proof: "More than 11 years of professional experience since 2014",
-        portraitAlt: "Portrait placeholder for Nada Elsebaee",
-        portraitCaption: "Portrait — coming later",
+        portraitAlt: "Portrait of Nada Elsebaee",
+        portraitCaption: "Nada Elsebaee",
         statYears: "+11",
         statYearsLabel: "years of experience since 2014",
         statFields: "5",
@@ -275,7 +275,7 @@ var SITE = {
   },
   aboutPage: {
     ar: {
-      subtitle: "خبيرة إدارة عمليات، تصميم تعليمي، وإنتاج بصري",
+      subtitle: "خبرة تجمع بين الإبداع والمنهجية",
       intro: "قيادية متخصصة واسعة الخبرات، تجمع بين المنهجية والإبداع برؤية عابرة للأطر الجامدة. أتنقل من التصميم وتطوير المناهج، إلى الإدارة الاستراتيجية للعمليات والتجارة الإلكترونية، وصناعة المحتوى والتوثيق البصري، مع توظيف التقنيات والأدوات مثل هندسة أوامر الذكاء الاصطناعي.",
       experienceStory: "يمتد سجلي المهني لأكثر من 11 عامًا (2014–2026) في قيادة المنصات الرقمية وإدارتها، وتأسيس المقرات والمستودعات والأنظمة التشغيلية من الصفر. كما أدرت مبادرات ومشروعات مجتمعية وتنموية محلية ودولية بالتعاون مع جهات مثل UNESCO وCARE International وHabitat for Humanity وEUNIC وMakanuna.",
       educationStory: "أجمع بين خلفية أكاديمية في علم النفس من جامعة عين شمس، ودبلومات تخصصية بتقدير ممتاز في التنمية الثقافية من جامعة القاهرة وإخراج الأفلام من أكاديمية بدرخان، إلى جانب مهارات في أتمتة مسارات العمل، وبناء قواعد البيانات على Notion وAirtable، وتصميم المقاييس السلوكية والأدلة التطبيقية.",
@@ -384,7 +384,7 @@ var SITE = {
       publicationsEyebrow: "مختارات من الأعمال",
       publicationsTitle: "إصدارات وأعمال بارزة",
       ctaEyebrow: "لنتحدث عن مشروعك",
-      ctaTitle: "خبرة تجمع بين الإبداع والمنهجية",
+      ctaTitle: "إبداع موجه بمنهجية، وكفاءة قائمة على الأنظمة.",
       ctaText: "من تأسيس الأنظمة التشغيلية إلى تطوير الأدلة والمحتوى البصري، أدمج الخبرات المناسبة لبناء مخرجات واضحة وقابلة للتطبيق.",
       metaTitle: "ندى السباعي | إدارة العمليات، الأبحاث والإنتاج البصري",
       metaDescription: "ندى السباعي قيادية متخصصة في إدارة العمليات والتجارة الإلكترونية، والتصميم التعليمي، والأبحاث الثقافية، والإنتاج البصري، وهندسة أوامر الذكاء الاصطناعي، بخبرة تمتد لأكثر من 11 عامًا."
@@ -514,6 +514,7 @@ var SITE = {
         {
           title: "التوثيق والإنتاج الفني",
           description: "تخطيط وتنفيذ التوثيق الفوتوغرافي والمرئي، وإنتاج الأفلام والمواد الفنية، وإدارة التغطية الميدانية ولوجستياتها. يشمل ذلك تطوير تصورات ومواد مرئية مولّدة أو مدعومة بأدوات الذكاء الاصطناعي عند ملاءمتها للمشروع، مع مراجعة فنية وبشرية قبل الاستخدام.",
+          image: "assets/images/projects/wuf12.webp",
           summary: "التوثيق الميداني وإنتاج الأفلام والمواد الفنية، بما فيها مخرجات إبداعية مدعومة بالذكاء الاصطناعي.",
           examples: [
             {
@@ -533,6 +534,7 @@ var SITE = {
         {
           title: "تنسيق المشاريع الثقافية والتصميم التعليمي",
           description: "تحويل احتياجات الفئات والسياق إلى برامج قابلة للتنفيذ، وتصميم وتيسير الورش، وإعداد الأدلة وأدوات التعلّم والتقييم. من الأمثلة دليل سوا سوا مع ألوان وأوتار بدعم اليونسكو، ومبادرات أنا المصري ودوار العزبة ومشروع أمتن في دار المبرة.",
+          image: "assets/images/projects/sawa-sawa.webp",
           summary: "تصميم برامج وورش وأدلة وأدوات تعلّم وتقييم مرتبطة بالسياق.",
           examples: [
             {
@@ -552,6 +554,7 @@ var SITE = {
         {
           title: "سرد العلامات التجارية واستراتيجية المحتوى",
           description: "بناء صوت تحريري متسق، وتأليف سلاسل سردية ثقافية وقصص أصل المنتجات، وصياغة المحتوى التنفيذي. يمكن توظيف أدوات الذكاء الاصطناعي للبحث الأولي وتوليد مسودات أو بدائل، مع التحقق من المعلومات والتحرير البشري قبل النشر.",
+          image: "assets/images/projects/assetsimagesprojectsgaia-global (4).webp",
           summary: "سرد العلامة وقصص المنتجات ومحتوى تحريري، مع استخدام منضبط لأدوات الذكاء الاصطناعي.",
           examples: [
             {
@@ -567,6 +570,7 @@ var SITE = {
         {
           title: "العمليات الإبداعية وتجهيز بيئات العمل",
           description: "تحليل خطوات العمل وتوثيقها، وإعداد أنظمة التشغيل وقواعد البيانات وتدفقات المخزون، وتجهيز الاستوديوهات وتنظيم مسؤوليات الفرق. تُستخدم أدوات الذكاء الاصطناعي والأتمتة لتقليل المهام المتكررة حين تكون مناسبة، مع إبقاء القرارات والمراجعة بيد الفريق.",
+          image: "assets/images/projects/mastery-academy.webp",
           summary: "أنظمة تشغيل واستوديوهات وتدفقات عمل مدعومة بالأتمتة وأدوات الذكاء الاصطناعي المناسبة.",
           examples: [
             {
@@ -582,6 +586,7 @@ var SITE = {
         {
           title: "إدارة وتطوير الحضور الرقمي",
           description: "تحديد المنصات الملائمة للأهداف والجمهور، وبناء خطة محتوى وتقويم نشر، وإدارة سير الإنتاج والمراجعة وقراءة مؤشرات الأداء. يمكن توظيف أدوات الذكاء الاصطناعي لدعم البحث وتكييف الصيغ، دون استبدال المراجعة التحريرية أو صوت الجهة.",
+          image: "assets/images/projects/assetsimagesprojectsgaia-global (2).webp",
           summary: "استراتيجية منصات ومحتوى ونشر وقياس أداء، مع دعم أدوات AI عند الحاجة.",
           examples: [
             {
@@ -593,6 +598,7 @@ var SITE = {
         {
           title: "دراسات السوق وتحليل الجمهور",
           description: "تصميم أسئلة البحث وأدوات جمع البيانات، وتنفيذ مراجعة مكتبية أو ميدانية لفهم الجمهور والمنافسين والفرص. تُنظّم النتائج وتُحلل وتُقدّم في صورة استنتاجات وحدود واضحة وخطوات قابلة للتطبيق؛ ويمكن استخدام أدوات AI للمساندة بعد مراعاة الخصوصية والتحقق.",
+          image: "assets/images/projects/assetsimagesnada-culturaldevelepment-study.webp",
           summary: "بحث الجمهور والسوق وتحويل الأدلة إلى قرارات عملية، مع توظيف مسؤول لأدوات التحليل.",
           examples: [
             {
@@ -604,6 +610,7 @@ var SITE = {
         {
           title: "تطوير الاستراتيجيات والخطط",
           description: "صياغة استراتيجيات وخطط مؤسسية ورقمية وفنية إبداعية انطلاقًا من تحليل الوضع والأهداف والموارد، ثم تحويلها إلى مراحل ومسؤوليات ومؤشرات متابعة قابلة للقياس. تُستخدم الأدوات الرقمية والذكاء الاصطناعي للمساندة في التنظيم والاستكشاف، مع مراجعة المخرجات وربطها بالأدلة.",
+          image: "assets/images/projects/assetsimagesprojectsgaia-global.webp",
           summary: "استراتيجيات قابلة للتنفيذ بمراحل ومسؤوليات ومؤشرات واضحة وأدوات رقمية مساندة.",
           examples: [
             {
@@ -622,6 +629,7 @@ var SITE = {
       pageTitle: "Services | Nada Elsebaee Lab",
       pageDescription: "Nada Elsebaee's services in visual documentation, media production, cultural project coordination, instructional design, content strategy and digital operations.",
       eyebrow: "Ways to work together",
+      image: "assets/images/projects/screenplays.webp",
       title: "Practical solutions from idea to delivery",
       intro: "Practical solutions for companies, NGOs, cultural organizations and media projects.",
       contactTitle: "Let's discuss a project or a consultation tailored to your needs",
@@ -632,6 +640,7 @@ var SITE = {
         {
           title: "Visual Documentation & Creative Production",
           description: "Planning and delivering photographic and video documentation, films, creative assets and field-production logistics. This can include visual concepts and assets generated or supported by AI tools when suitable to the project, with human and creative review before use.",
+          image: "assets/images/projects/wuf12.webp",
           summary: "Field documentation, film and creative production, including carefully reviewed AI-assisted outputs.",
           examples: [
             {
@@ -651,6 +660,7 @@ var SITE = {
         {
           title: "Cultural Project Coordination & Instructional Design",
           description: "Turning audience needs and context into workable programs, facilitated workshops, learning resources and evaluation tools. Examples include the Sawa Sawa guide with Alwan wa Awtar and UNESCO support, Ana Masry, Dawar Ezbet and Amton at Dar Al-Mabara.",
+          image: "assets/images/projects/sawa-sawa.webp",
           summary: "Context-led community programs, workshops, guides and learning tools.",
           examples: [
             {
@@ -670,6 +680,7 @@ var SITE = {
         {
           title: "Brand Storytelling & Content Strategy",
           description: "Building an editorial voice through cultural storytelling, product-origin narratives and executive copy. AI tools can support initial research, ideation and draft variations, followed by fact-checking and human editing before publication.",
+          image: "assets/images/projects/assetsimagesprojectsgaia-global (4).webp",
           summary: "Brand storytelling and editorial content with considered, human-reviewed AI support.",
           examples: [
             {
@@ -685,6 +696,7 @@ var SITE = {
         {
           title: "Creative Operations & Workplace Setup",
           description: "Mapping workflows, documenting procedures, structuring databases and inventory flows, and setting up studios and team responsibilities. Automation and AI tools can reduce repetitive work where appropriate while leaving decisions and review with the team.",
+          image: "assets/images/projects/mastery-academy.webp",
           summary: "Operational systems, studio setup and workflows supported by suitable automation and AI tools.",
           examples: [
             {
@@ -700,6 +712,7 @@ var SITE = {
         {
           title: "Digital Presence Management & Growth",
           description: "Selecting platforms for audience and goals, developing content plans and publishing calendars, coordinating production and reviewing performance. AI tools may support research and format adaptation without replacing editorial review or the organization's voice.",
+          image: "assets/images/projects/assetsimagesprojectsgaia-global (2).webp",
           summary: "Platform, content and publishing strategy with performance review and optional AI support.",
           examples: [
             {
@@ -711,6 +724,7 @@ var SITE = {
         {
           title: "Market Research & Audience Analysis",
           description: "Designing research questions and collection tools, then conducting desk or field research into audience needs, competitors and opportunities. Findings are organized with clear evidence and limitations; AI tools may assist analysis subject to privacy and verification.",
+          image: "assets/images/projects/assetsimagesnada-culturaldevelepment-study.webp",
           summary: "Audience and market research translated into evidence-based decisions, with responsible analytical tools.",
           examples: [
             {
@@ -722,6 +736,7 @@ var SITE = {
         {
           title: "Institutional, Digital & Creative Strategy",
           description: "Developing institutional, digital and creative strategies from a review of context, objectives and resources, then translating them into phases, responsibilities and measurable indicators. Digital and AI tools can support organization and exploration, with outputs reviewed against evidence.",
+          image: "assets/images/projects/assetsimagesprojectsgaia-global.webp",
           summary: "Actionable strategies with clear phases, ownership and measures, supported by appropriate digital tools.",
           examples: [
             {
@@ -889,6 +904,30 @@ var SITE = {
       id: "gaia-global",
       category: "operations",
       image: "assets/images/projects/assetsimagesprojectsgaia-global.webp",
+      gallery: [
+        {
+          src: "assets/images/projects/assetsimagesprojectsgaia-global (2).webp",
+          alt: {
+            ar: "مواد مرئية من مشروع GAIA Global",
+            en: "Visual material from GAIA Global"
+          },
+          caption: {
+            ar: "مواد مرئية مختارة من GAIA Global",
+            en: "Selected visual material from GAIA Global"
+          }
+        },
+        {
+          src: "assets/images/projects/assetsimagesprojectsgaia-global (4).webp",
+          alt: {
+            ar: "مواد مرئية من مشروع GAIA Global",
+            en: "Visual material from GAIA Global"
+          },
+          caption: {
+            ar: "مواد مرئية مختارة من GAIA Global",
+            en: "Selected visual material from GAIA Global"
+          }
+        }
+      ],
       years: "يونيو 2025 – يونيو 2026",
       organization: "GAIA Global",
       role: "المدير العام ومدير عمليات التجارة الإلكترونية",
@@ -996,6 +1035,19 @@ var SITE = {
       id: "wuf12",
       category: "visual",
       image: "assets/images/projects/wuf12.webp",
+      gallery: [
+        {
+          src: "assets/images/projects/assetsimagesprojectswuf12.webp",
+          alt: {
+            ar: "توثيق مشاركة Habitat for Humanity في المنتدى الحضري العالمي 12",
+            en: "Documentation of Habitat for Humanity's WUF12 participation"
+          },
+          caption: {
+            ar: "مشاركة Habitat for Humanity في المنتدى الحضري العالمي 12",
+            en: "Habitat for Humanity's participation at WUF12"
+          }
+        }
+      ],
       years: "نوفمبر 2024",
       organization: "Habitat for Humanity · المنتدى الحضري العالمي WUF12",
       role: "مديرة إنتاج ومديرة تصوير (DOP)",
@@ -1281,7 +1333,6 @@ var SITE = {
     {
       id: "yomeddine",
       category: "visual",
-      image: "assets/images/projects/yomeddine.webp",
       years: "2015",
       organization: "فيلم يوم الدين",
       role: "ستايلست",
@@ -1303,7 +1354,31 @@ var SITE = {
     {
       id: "lawha",
       category: "visual",
-      image: "assets/images/projects/lawha.webp",
+      image: "assets/images/optimized/lawha.webp",
+      gallery: [
+        {
+          src: "assets/images/projects/lawha (6).webp",
+          alt: {
+            ar: "لقطة مختارة من الفيلم القصير لوحة",
+            en: "Selected still from the short film Lawha"
+          },
+          caption: {
+            ar: "لقطة مختارة من فيلم «لوحة»",
+            en: "Selected still from Lawha"
+          }
+        },
+        {
+          src: "assets/images/projects/lawha (10).webp",
+          alt: {
+            ar: "لقطة مختارة من الفيلم القصير لوحة",
+            en: "Selected still from the short film Lawha"
+          },
+          caption: {
+            ar: "لقطة مختارة من فيلم «لوحة»",
+            en: "Selected still from Lawha"
+          }
+        }
+      ],
       years: "2019",
       organization: "فيلم مستقل · مهرجان رؤى للفيلم المصري القصير",
       role: "كاتبة ومخرجة ومنتجة",
@@ -1361,6 +1436,30 @@ var SITE = {
       id: "gelsa-orfeya",
       category: "visual",
       image: "assets/images/projects/gelsa-orfeya.webp",
+      gallery: [
+        {
+          src: "assets/images/projects/gelsa-orfeya (2).webp",
+          alt: {
+            ar: "صورة من فيلم جلسة عرفية",
+            en: "Image from Gelsa Orfeya"
+          },
+          caption: {
+            ar: "مواد مرئية من فيلم «جلسة عرفية»",
+            en: "Visual material from Gelsa Orfeya"
+          }
+        },
+        {
+          src: "assets/images/projects/gelsa-orfeya (3).webp",
+          alt: {
+            ar: "صورة من فيلم جلسة عرفية",
+            en: "Image from Gelsa Orfeya"
+          },
+          caption: {
+            ar: "مواد مرئية من فيلم «جلسة عرفية»",
+            en: "Visual material from Gelsa Orfeya"
+          }
+        }
+      ],
       years: "2018",
       organization: "فيلم مستقل",
       role: "مساعدة مخرج أول ومونتيرة",
@@ -1404,6 +1503,7 @@ var SITE = {
     {
       id: "screenplays",
       category: "visual",
+      image: "assets/images/projects/screenplays.webp",
       years: "",
       organization: "مشاريع كتابة سينمائية",
       role: "كاتبة سيناريو",
@@ -1424,7 +1524,7 @@ var SITE = {
     {
       id: "music-video-documentation",
       category: "visual",
-      image: "assets/images/projects/music-video-documentation.webp",
+      image: "assets/images/optimized/music-video-documentation.webp",
       years: "",
       organization: "فيديو كليب موسيقي",
       role: "مصورة توثيق المكياج",

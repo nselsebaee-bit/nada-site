@@ -1,6 +1,6 @@
 # Nada Elsebaee Lab — Project Reference
 
-> **Living project brief.** Last reviewed: 2026-10-20. Read this file before making changes, and update it when project facts, decisions, or delivery status change. VS Code agent sessions that support workspace hooks automatically record changed website source files below; assistants must still update factual context when it changes. See `AGENTS.md` for the assistant workflow.
+> **Living project brief.** Last reviewed: 2026-11-11. Read this file before making changes, and update it when project facts, decisions, or delivery status change. VS Code agent sessions that support workspace hooks automatically record changed website source files below; assistants must still update factual context when it changes. See `AGENTS.md` for the assistant workflow.
 
 ## Project at a glance
 
@@ -54,7 +54,8 @@ The site is plain HTML, CSS, and vanilla JavaScript. It has no package dependenc
 
 ## Delivery status and open items
 
-- **Photography:** The homepage hero still uses a designed placeholder; no approved portrait/image assets are present in the project root. Follow the image plan below when adding approved assets. Preserve meaningful alt text and do not publish identifiable images of children or program participants without permission.
+- **Phase 1 visual content restoration:** The homepage now uses the supplied portrait at `assets/images/projects/assetsimagesnada-portrait.webp`. Archive-card imagery is visible on desktop and mobile, and project-detail covers use each record's assigned image; no large empty cover panel is rendered when a project has no cleared image. Selected galleries are wired for GAIA Global, WUF12, Lawha, and Gelsa Orfeya. The seven bilingual service cards use relevant project artwork rather than CSS-only panels. Original source files remain unchanged; optimized WebP derivatives are stored separately. No images were extracted from the portfolio PDF.
+- **Remaining visual-content review:** Al-Asmarat, Darb al-Ahmar tour, CARE Le Caire, and Delta Festival still have no suitable, permission-cleared cover assignment. The Yomeddine poster is withheld because it depicts an identifiable child and no publishing permission was established. Seven pre-existing covers remain explicitly marked as generated artwork, not documentary photographs: On Time/Pioneers, Hakim archive, Sky Events, South Sinai community, Palestinian training, actor showreels, and TEN TV. Do not replace these with participant photography without appropriate permission.
 - **Domain and hosting:** No domain, DNS provider, or hosting configuration is recorded in this project. Confirm the domain owner and chosen static host before deployment. Never request account passwords or make DNS/production changes without explicit approval.
 - **Contact form:** `SITE.formEndpoint` in `content.js` is empty. The form must remain disabled until Nada configures an endpoint in her own Formspree account.
 - **Blog:** Temporarily hidden from all site navigation, footer, and homepage links; its index and four article pages have `noindex, nofollow` metadata and redirect to the homepage. Keep the content and files for future editing. The Arabic articles, methodology notes, research-source disclosure, and optional image metadata remain in `content.js`; do not delete them while the section is paused.
@@ -63,40 +64,22 @@ The site is plain HTML, CSS, and vanilla JavaScript. It has no package dependenc
 - **Services:** The seven bilingual service offers and homepage preview are implemented with expanded descriptions and CSS-generated image panels as temporary placeholders. To add approved service photography, set an `image` path on the corresponding service item in both language arrays in `SITE.services`; service contact links use the current public site email and WhatsApp number.
 - **Automatic cleanup safety:** Cleanup is limited to replacing the generated sync summary with the latest one. Never automatically delete site content, images, assets, or project files. The sync baseline is one temporary file per project and is overwritten in place.
 
-## Image asset plan
+## Image mapping and editorial status
 
-The homepage portrait and service-card graphics are currently placeholders/CSS artwork. Only use photographs, film stills, publication covers, and project materials that Nada owns or has permission to publish. The project filenames below are suggested image files, not automatically wired page assets yet. Keep the paths/names consistent so they can be connected to the matching project records later:
+The original HTML/CSS/JavaScript site structure and URLs are unchanged. The homepage portrait uses the supplied square portrait file at `assets/images/projects/assetsimagesnada-portrait.webp`. Existing project cover assignments remain in place except that the Screenplays record now uses `assets/images/projects/screenplays.webp`; its cover is shown in archive and detail views. The Yomeddine cover is intentionally not displayed until publishing permission for the identifiable child in the supplied film poster is confirmed.
 
-| Priority | Suggested file | Use |
+The project-detail galleries use only matching, local project media:
+
+| Project | Gallery sources | Editorial label |
 | --- | --- | --- |
-| First | `assets/images/nada-portrait.webp` | Homepage portrait (the About-page visual is currently CSS artwork; a portrait there is optional and would require a separate design update) |
-| Featured | `assets/images/projects/gaia-global.webp` | GAIA Global archive card and project cover |
-| Featured | `assets/images/projects/sawa-sawa.webp` | Sawa Sawa archive card and project cover; guide cover is suitable |
-| Featured | `assets/images/projects/nassajat-alnil.webp` | Nassajat El Nile archive card and project cover |
-| Featured | `assets/images/projects/wuf12.webp` | WUF12 archive card and project cover |
-| Featured | `assets/images/projects/dar-al-mabra.webp` | Amten / Dar Al-Mabara archive card and project cover |
-| Featured | `assets/images/projects/makanuna-visual.webp` | Makanuna archive card and project cover |
-| Featured | `assets/images/projects/alasmarat.webp` | Al-Asmarat archive card and project cover |
-| Next | `assets/images/projects/darb-al-ahmar-tour.webp` | Darb Al-Ahmar tour archive card and project cover |
-| Next | `assets/images/projects/mastery-academy.webp` | Mastery Academy archive card and project cover |
-| Next | `assets/images/projects/on-time-pioneers.webp` | On Time Group / Pioneers Academy archive card and project cover |
-| Next | `assets/images/projects/hakim-archive.webp` | Hakim archive card and project cover |
-| Next | `assets/images/projects/care-lecaire.webp` | CARE International / Le Caire archive card and project cover |
-| Optional | `assets/images/projects/sky-events.webp` | Sky Events archive card and project cover |
-| Optional | `assets/images/projects/yomeddine.webp` | Yomeddine archive card and project cover |
-| Optional | `assets/images/projects/lawha.webp` | Lawha archive card and project cover |
-| Optional | `assets/images/projects/independent-films.webp` | Independent film projects archive card and project cover |
-| Optional | `assets/images/projects/gelsa-orfeya.webp` | Gelsa Orfeya archive card and project cover |
-| Optional | `assets/images/projects/bara-geiby.webp` | Bara Geiby archive card and project cover |
-| Optional | `assets/images/projects/screenplays.webp` | Screenwriting archive card and project cover |
-| Optional | `assets/images/projects/music-video-documentation.webp` | Music video documentation archive card and project cover |
-| Optional | `assets/images/projects/sinai-community.webp` | South Sinai community arts archive card and project cover |
-| Optional | `assets/images/projects/palestinian-training.webp` | Palestinian training documentation archive card and project cover |
-| Optional | `assets/images/projects/actor-showreels.webp` | Actor showreels archive card and project cover |
-| Optional | `assets/images/projects/ten-tv.webp` | TEN TV archive card and project cover |
-| Optional | `assets/images/projects/delta-festival.webp` | Delta Little Queen archive card and project cover |
+| GAIA Global | `assets/images/projects/assetsimagesprojectsgaia-global (2).webp`; `assets/images/projects/assetsimagesprojectsgaia-global (4).webp` | Selected visual material from GAIA Global |
+| WUF12 | `assets/images/projects/assetsimagesprojectswuf12.webp` | Habitat for Humanity's participation at WUF12 |
+| Lawha | `assets/images/projects/lawha (6).webp`; `assets/images/projects/lawha (10).webp` | Selected stills from the short film |
+| Gelsa Orfeya | `assets/images/projects/gelsa-orfeya (2).webp`; `assets/images/projects/gelsa-orfeya (3).webp` | Project visual material |
 
-Start with the portrait and one cover image for each featured project. Archive cards and service cards can be wired to approved image paths; project-detail hero and gallery support will need implementation before those images can be displayed there. Service cards can reuse a relevant project image, so separate service photos are not required at first. WebP is preferred; keep originals separately, export portrait images near 1200 px on the long edge and project covers around 1200 × 800 px, and avoid uploading large camera originals to the website. Place assets in the matching folders under `assets/images/`; after adding them, the image paths still need to be connected in `content.js`.
+The seven service cards now have matching image paths in both language arrays: WUF12 for visual production; Sawa Sawa for cultural coordination and instructional design; GAIA Global for brand storytelling and digital presence; Mastery Academy for creative operations; Nada's cultural-development study for market research; and GAIA Global for institutional and creative strategy. The source files remain untouched. Two separate derivatives in `assets/images/optimized/` are used for Lawha (219 KB, 1116 × 1500) and music-video documentation (43 KB, 1200 × 1800); the portrait and selected project images already have appropriate WebP sizes. Archive-card and gallery images lazy-load and decode asynchronously; the homepage portrait is prioritized.
+
+No PDF images were extracted. The supplied portfolio references were used to confirm project context and captions; original local assets were preferred. The unassigned project-image records remain Al-Asmarat, Darb al-Ahmar tour, CARE Le Caire, Delta Festival, and Yomeddine (permission hold). Participant imagery is not published without appropriate permission.
 
 ## Adding blog posts
 
@@ -116,9 +99,9 @@ For UI changes, preview both Arabic and English, verify RTL/LTR and keyboard int
 ## Automatic source-change tracking
 
 <!-- AUTO-SYNC:START -->
-- Last sync (local time): `21 Oct 2026, 00:37:14 Africa/Cairo`
-- Last sync (UTC): `2026-10-20T21:37:14.228Z`
-- Files detected in the latest sync: `assets/images/projects/assetsimagesnada-culturaldevelepment-college (2).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college (3).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college (4).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college (5).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college (6).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college (7).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college (8).webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-college.webp`, `assets/images/projects/assetsimagesnada-culturaldevelepment-study.webp`, `assets/images/projects/assetsimagesnada-portrait (2).webp`, `assets/images/projects/assetsimagesnada-portrait (4).webp`, `assets/images/projects/assetsimagesnada-portrait.webp`, `assets/images/projects/assetsimagesprojectsalasmarat (2).webp`, `assets/images/projects/assetsimagesprojectsalasmarat.webp`, `assets/images/projects/assetsimagesprojectsdar-al-mabra (2).webp`, `assets/images/projects/assetsimagesprojectsdar-al-mabra (3).webp`, `assets/images/projects/assetsimagesprojectsdar-al-mabra (4).webp`, `assets/images/projects/assetsimagesprojectsdar-al-mabra (5).webp`, `assets/images/projects/assetsimagesprojectsdar-al-mabra (6).webp`, `assets/images/projects/assetsimagesprojectsdar-al-mabra.webp`, `assets/images/projects/assetsimagesprojectsgaia-global (2).webp`, `assets/images/projects/assetsimagesprojectsgaia-global (3).webp`, `assets/images/projects/assetsimagesprojectsgaia-global (4).webp`, `assets/images/projects/assetsimagesprojectsgaia-global.webp`, `assets/images/projects/assetsimagesprojectsmakanuna-visual (1).webp`, `assets/images/projects/assetsimagesprojectsnassajat-alnil (1).webp`, `assets/images/projects/assetsimagesprojectsnassajat-alnil (2).webp`, `assets/images/projects/assetsimagesprojectsnassajat-alnil (3).webp`, `assets/images/projects/assetsimagesprojectsnassajat-alnil (4).webp`, `assets/images/projects/assetsimagesprojectsnassajat-alnil (5).webp`, `assets/images/projects/assetsimagesprojectsnassajat-alnil.webp`, `assets/images/projects/assetsimagesprojectssawa-sawa (2).webp`, `assets/images/projects/assetsimagesprojectssawa-sawa (3).webp`, `assets/images/projects/assetsimagesprojectssawa-sawa (4).webp`, `assets/images/projects/assetsimagesprojectssawa-sawa (5).webp`, `assets/images/projects/assetsimagesprojectssawa-sawa (6).webp`, `assets/images/projects/assetsimagesprojectssawa-sawa (7).webp`, `assets/images/projects/assetsimagesprojectssawa-sawa.webp`, `assets/images/projects/assetsimagesprojectswuf12 (2).webp`, `assets/images/projects/assetsimagesprojectswuf12.webp`, `assets/images/projects/bara-geiby (2).webp`, `assets/images/projects/bara-geiby.webp`, `assets/images/projects/care-lecaire (2).webp`, `assets/images/projects/care-lecaire.webp`, `assets/images/projects/darb-al-ahmar-tour (2).webp`, `assets/images/projects/darb-al-ahmar-tour (3).webp`, `assets/images/projects/darb-al-ahmar-tour (4).webp`, `assets/images/projects/darb-al-ahmar-tour.webp`, `assets/images/projects/delta-festival (2).webp`, `assets/images/projects/delta-festival (3).webp`, `assets/images/projects/delta-festival (4).webp`, `assets/images/projects/delta-festival.webp`, `assets/images/projects/gelsa-orfeya (2).webp`, `assets/images/projects/gelsa-orfeya (3).webp`, `assets/images/projects/gelsa-orfeya.webp`, `assets/images/projects/independent-films.webp`, `assets/images/projects/lawha (1).webp`, `assets/images/projects/lawha (10).webp`, `assets/images/projects/lawha (11).webp`, `assets/images/projects/lawha (12).webp`, `assets/images/projects/lawha (13).webp`, `assets/images/projects/lawha (14).webp`, `assets/images/projects/lawha (15).webp`, `assets/images/projects/lawha (16).webp`, `assets/images/projects/lawha (17).webp`, `assets/images/projects/lawha (2).webp`, `assets/images/projects/lawha (3).webp`, `assets/images/projects/lawha (4).webp`, `assets/images/projects/lawha (5).webp`, `assets/images/projects/lawha (6).webp`, `assets/images/projects/lawha (7).webp`, `assets/images/projects/lawha (8).webp`, `assets/images/projects/lawha (9).webp`, `assets/images/projects/lawha.webp`, `assets/images/projects/mastery-academy (2).webp`, `assets/images/projects/mastery-academy (3).webp`, `assets/images/projects/mastery-academy.webp`, `assets/images/projects/music-video-documentation.webp`, `assets/images/projects/nada-develepment-lab (2).webp`, `assets/images/projects/nada-develepment-lab.webp`, `assets/images/projects/screenplays.webp`, `assets/images/projects/yomeddine.webp`
+- Last sync (local time): `11 Nov 2026, 13:49:39 Africa/Cairo`
+- Last sync (UTC): `2026-11-11T11:49:39.192Z`
+- Files detected in the latest sync: `README.md`
 - Retention: latest sync only; each update replaces this record instead of accumulating an old log.
 - This hook detects changed website source/assets; assistants must still update the project facts and open-item sections when those change.
 <!-- AUTO-SYNC:END -->

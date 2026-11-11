@@ -254,9 +254,8 @@
   }
 
   function localizedProject(project) {
-    if (language === "ar") return project;
-    var translated = project.en || {};
-    var translatedMeta = englishProjectMeta[project.id] || [];
+    var translated = language === "ar" ? {} : (project.en || {});
+    var translatedMeta = language === "ar" ? [] : (englishProjectMeta[project.id] || []);
     return {
       id: project.id,
       category: project.category,
@@ -265,6 +264,14 @@
       role: translated.role || project.role,
       title: translated.title || project.title,
       summary: translated.summary || project.summary,
+      image: project.image,
+      gallery: (project.gallery || []).map(function (media) {
+        return {
+          src: media.src,
+          alt: media.alt ? media.alt[language] : translated.title || project.title,
+          caption: media.caption ? media.caption[language] : ""
+        };
+      }),
       scope: translated.scope || project.scope,
       outcomes: translated.outcomes || project.outcomes,
       links: project.links
@@ -289,6 +296,7 @@
       photo.src = project.image;
       photo.alt = item.title;
       photo.loading = "lazy";
+      photo.decoding = "async";
       image.appendChild(photo);
     } else {
       image.appendChild(element("span", "placeholder-caption", copy.imageLater));
@@ -725,12 +733,17 @@
     heading.appendChild(element("p", "lead", item.summary));
     host.appendChild(heading);
 
-    var heroImage = element("div", "project-cover media-placeholder");
-    heroImage.setAttribute("role", "img");
-    heroImage.setAttribute("aria-label", copy.imageLater);
-    heroImage.appendChild(element("span", "placeholder-mark", "N"));
-    heroImage.appendChild(element("span", "placeholder-caption", copy.imageLater));
-    host.appendChild(heroImage);
+    if (item.image) {
+      var heroImage = element("figure", "project-cover media-placeholder");
+      var coverPhoto = element("img", "project-cover-photo");
+      coverPhoto.src = item.image;
+      coverPhoto.alt = item.title;
+      coverPhoto.loading = "eager";
+      coverPhoto.decoding = "async";
+      heroImage.appendChild(coverPhoto);
+      if (item.organization) heroImage.appendChild(element("figcaption", "project-cover-caption", item.organization));
+      host.appendChild(heroImage);
+    }
 
     var facts = element("dl", "project-facts");
     [
@@ -764,32 +777,41 @@
     }
     host.appendChild(details);
 
-    var gallery = element("section", "project-gallery");
-    gallery.appendChild(element("p", "eyebrow", copy.relatedLabel));
-    var mediaGrid = element("div", "media-grid");
-    for (var i = 0; i < 3; i += 1) {
-      var placeholder = element("div", "gallery-placeholder media-placeholder");
-      placeholder.setAttribute("aria-hidden", "true");
-      placeholder.appendChild(element("span", "placeholder-mark", "N"));
-      placeholder.appendChild(element("span", "placeholder-caption", copy.imageLater));
-      mediaGrid.appendChild(placeholder);
-    }
-    gallery.appendChild(mediaGrid);
+    var galleryItems = item.gallery || [];
+    if (galleryItems.length || (project.links && project.links.length)) {
+      var gallery = element("section", "project-gallery");
+      gallery.appendChild(element("p", "eyebrow", copy.relatedLabel));
+      if (galleryItems.length) {
+        var mediaGrid = element("div", "media-grid");
+        galleryItems.forEach(function (media) {
+          var figure = element("figure", "project-gallery-item");
+          var photo = element("img", "project-gallery-image");
+          photo.src = media.src;
+          photo.alt = media.alt;
+          photo.loading = "lazy";
+          photo.decoding = "async";
+          figure.appendChild(photo);
+          if (media.caption) figure.appendChild(element("figcaption", "project-gallery-caption", media.caption));
+          mediaGrid.appendChild(figure);
+        });
+        gallery.appendChild(mediaGrid);
+      }
 
-    if (project.links && project.links.length) {
-      var links = element("ul", "media-links");
-      project.links.forEach(function (linkData) {
-        var linkItem = element("li");
-        var link = element("a", "text-link", linkData[0]);
-        link.href = linkData[1];
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        linkItem.appendChild(link);
-        links.appendChild(linkItem);
-      });
-      gallery.appendChild(links);
+      if (project.links && project.links.length) {
+        var links = element("ul", "media-links");
+        project.links.forEach(function (linkData) {
+          var linkItem = element("li");
+          var link = element("a", "text-link", linkData[0]);
+          link.href = linkData[1];
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          linkItem.appendChild(link);
+          links.appendChild(linkItem);
+        });
+        gallery.appendChild(links);
+      }
+      host.appendChild(gallery);
     }
-    host.appendChild(gallery);
 
     var more = element("section", "section more-projects");
     more.appendChild(element("h2", "", copy.moreProjects));

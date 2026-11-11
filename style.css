@@ -2040,3 +2040,65 @@ h1, h2 {
 @media (prefers-reduced-motion: reduce) {
   .service-card, .about-approach-card, .blog-filter { transition: none; }
 }
+
+.hero-visual::before, .hero-visual::after { display: none; content: none; }
+.hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 32%; }
+.hero-caption {
+  position: absolute;
+  inset-inline-start: 18px;
+  bottom: 18px;
+  z-index: 1;
+  max-width: calc(100% - 36px);
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 8px;
+  background: rgba(34,59,80,.72);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: start;
+  backdrop-filter: blur(8px);
+}
+.project-card .card-image,
+.project-card:hover .card-image,
+.project-card:focus-within .card-image {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.card-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card-image .placeholder-caption { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; }
+.project-cover { position: relative; height: clamp(240px, 38vw, 440px); min-height: 0; overflow: hidden; margin: 0; }
+.project-cover-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.project-cover-caption {
+  position: absolute;
+  inset-inline-start: 18px;
+  bottom: 18px;
+  z-index: 1;
+  max-width: calc(100% - 36px);
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 8px;
+  background: rgba(34,59,80,.72);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: start;
+  backdrop-filter: blur(8px);
+}
+.project-gallery-item { min-width: 0; overflow: hidden; margin: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--white); box-shadow: 0 3px 0 var(--line); }
+.project-gallery-image { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.project-gallery-caption { padding: 10px 12px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+@media (max-width: 720px) {
+  .project-cover { height: clamp(220px, 62vw, 320px); }
+}
