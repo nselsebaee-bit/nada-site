@@ -12,7 +12,7 @@ Nada Elsebaee Lab is a bilingual (Arabic/English) personal portfolio for Nada El
 - Arabic user-facing copy uses general, gender-neutral phrasing rather than addressing visitors with feminine or masculine forms.
 - Main navigation places Experience Archive after About, labels the blog "Blog / المدونة" and the contact page "Collaborate / للتعاون"; navigation arrows use direction-stable SVG icons.
 - The visual identity is warm, editorial, and creative, using the existing CSS design tokens in `style.css`. The raised-card, subtle 3D treatment and green/blue accents established on the Services page are shared across the site; each page keeps its own content and layout. Do not introduce page-specific fonts or colors without approval.
-- A dedicated Services page presents seven expanded bilingual service offers, linking each to relevant archive projects. Cleared imagery is used where available; abstract CSS panels remain for offers without a suitable image. The homepage previews the services as alternating visual/text cards between the hero/highlights and experience archive; AI-assisted production, content and workflow support are described in relevant offers.
+- A dedicated Services page presents seven expanded bilingual service offers with CSS-generated visual panels (temporary until approved service images are added) and links to related archive projects. The homepage previews the services as alternating visual/text cards between the hero/highlights and experience archive; AI-assisted production, content and workflow support are described in relevant offers.
 - A dedicated bilingual Studio page presents selected YouTube videos as lightweight thumbnail cards under the title "A Space for Visual Stories / مساحة للحكايات المرئية". Its introduction describes the range of visual work generally rather than naming only selected project types. Videos load in a privacy-enhanced embedded player only when selected; each card links to its corresponding project in the archive.
 - A persistent translucent return control sits at the lower-left of every page: it scrolls to the top when the page is scrolled and returns to the previous browser-history entry at the top, with the homepage as a no-history fallback.
 - The homepage now uses a 3D editorial hero treatment and an asymmetric seven-card services mosaic; abstract graphics remain CSS-generated so the layout does not depend on placeholder artwork.
@@ -37,8 +37,6 @@ Nada Elsebaee Lab is a bilingual (Arabic/English) personal portfolio for Nada El
 | `services.html` | Services overview and related project links |
 | `about.html` | Profile, competencies, education, training, and selected work |
 | `contact.html` | Contact links and optional contact form |
-| `robots.txt` | Search-crawler guidance and sitemap location |
-| `sitemap.xml` | Public pages and project-detail URLs |
 | `content.js` | Arabic/English copy, project data, public links, contact settings |
 | `script.js` | Shared page rendering, navigation, localization, and interactions |
 | `style.css` | Shared components, design tokens, responsive layouts, and page styles |
@@ -56,34 +54,32 @@ The site is plain HTML, CSS, and vanilla JavaScript. It has no package dependenc
 
 ## Delivery status and open items
 
-- **Phase 1 visual content restoration:** The homepage uses `assets/images/projects/assetsimagesnada-portrait.webp`; the About page now uses Nada's separate portrait at `assets/images/projects/assetsimagesnada-portrait (2).webp`. Archive cards and project-detail covers omit the image area when no cleared image is assigned. Cleared imagery is used for Nassajat El Nile (a project poster), WUF12 (a camera setup), and Mastery Academy (an instructional infographic). Selected galleries remain for Lawha and Gelsa Orfeya. Service cards use approved WUF12 and Mastery imagery plus the cultural-development study where appropriate; remaining art is CSS-generated rather than an empty image placeholder. Two new optimized WebP derivatives are stored separately. No images were extracted from the portfolio PDF.
-- **Remaining visual-content review:** GAIA Global, Sawa Sawa, Dar Al-Mabara, Makanuna visual projects, Al-Asmarat, Darb al-Ahmar tour, CARE Le Caire, Yomeddine, and Delta Festival have no cleared project-photo cover. Group and workshop photographs are withheld where participant publication permission is unverified; this includes children, young people, and participants in sensitive support programs. Nassajat videos are not shown in the Studio thumbnail gallery pending permission review, while their existing project-detail video URLs remain unchanged. Seven pre-existing covers remain explicitly marked as generated artwork, not documentary photographs: On Time/Pioneers, Hakim archive, Sky Events, South Sinai community, Palestinian training, actor showreels, and TEN TV.
-- **Domain and hosting:** `CNAME` and `SITE.origin` identify `nadaelsebaee.com`; the existing GitHub Pages workflow serves the static site. Do not modify DNS or production configuration without explicit approval.
+- **Phase 1 visual content restoration:** The homepage now uses the supplied portrait at `assets/images/projects/assetsimagesnada-portrait.webp`. Archive-card imagery is visible on desktop and mobile, and project-detail covers use each record's assigned image; no large empty cover panel is rendered when a project has no cleared image. Selected galleries are wired for GAIA Global, WUF12, Lawha, and Gelsa Orfeya. The seven bilingual service cards use relevant project artwork rather than CSS-only panels. Original source files remain unchanged; optimized WebP derivatives are stored separately. No images were extracted from the portfolio PDF.
+- **Remaining visual-content review:** Al-Asmarat, Darb al-Ahmar tour, CARE Le Caire, and Delta Festival still have no suitable, permission-cleared cover assignment. The Yomeddine poster is withheld because it depicts an identifiable child and no publishing permission was established. Seven pre-existing covers remain explicitly marked as generated artwork, not documentary photographs: On Time/Pioneers, Hakim archive, Sky Events, South Sinai community, Palestinian training, actor showreels, and TEN TV. Do not replace these with participant photography without appropriate permission.
+- **Domain and hosting:** No domain, DNS provider, or hosting configuration is recorded in this project. Confirm the domain owner and chosen static host before deployment. Never request account passwords or make DNS/production changes without explicit approval.
 - **Contact form:** `SITE.formEndpoint` in `content.js` is empty. The form must remain disabled until Nada configures an endpoint in her own Formspree account.
 - **Blog:** Temporarily hidden from all site navigation, footer, and homepage links; its index and four article pages have `noindex, nofollow` metadata and redirect to the homepage. Keep the content and files for future editing. The Arabic articles, methodology notes, research-source disclosure, and optional image metadata remain in `content.js`; do not delete them while the section is paused.
-- **Studio:** Eight selected videos remain in the thumbnail gallery. Participant-focused videos are not previewed there pending permission review; their existing project-detail URLs remain unchanged. YouTube thumbnails and embedded playback load only as required, and cards use existing archive project IDs.
+- **Studio:** Twelve unique supplied video links are included; a duplicated GAIA Global video URL is shown once. Video thumbnails come from YouTube and embedded playback loads on user interaction. Cards use the existing archive project IDs.
 - **Master Factbook:** Add the public/shareable Notion URL only when Nada supplies the exact link and confirms it is intended for public sharing.
-- **Services:** The seven bilingual service offers and homepage preview use relevant cleared project images when available and CSS-generated abstract panels otherwise. To add approved service photography, set an `image` path on the corresponding service item in both language arrays in `SITE.services`; service contact links use the current public site email and WhatsApp number.
-- **Search metadata:** Public pages set bilingual titles, descriptions, canonical URLs, Open Graph, and Twitter metadata at runtime. `robots.txt` points to `sitemap.xml`, which lists the six public pages and 25 project-detail URLs; paused blog routes are excluded.
+- **Services:** The seven bilingual service offers and homepage preview are implemented with expanded descriptions and CSS-generated image panels as temporary placeholders. To add approved service photography, set an `image` path on the corresponding service item in both language arrays in `SITE.services`; service contact links use the current public site email and WhatsApp number.
 - **Automatic cleanup safety:** Cleanup is limited to replacing the generated sync summary with the latest one. Never automatically delete site content, images, assets, or project files. The sync baseline is one temporary file per project and is overwritten in place.
 
 ## Image mapping and editorial status
 
-The original HTML/CSS/JavaScript site structure and URLs are unchanged. Existing project descriptions and external project URLs are preserved. The homepage portrait uses `assets/images/projects/assetsimagesnada-portrait.webp`; the About portrait uses `assets/images/projects/assetsimagesnada-portrait (2).webp`. Safe documentary or project-output images are used only where their subject is appropriate and does not expose unverified participants.
+The original HTML/CSS/JavaScript site structure and URLs are unchanged. The homepage portrait uses the supplied square portrait file at `assets/images/projects/assetsimagesnada-portrait.webp`. Existing project cover assignments remain in place except that the Screenplays record now uses `assets/images/projects/screenplays.webp`; its cover is shown in archive and detail views. The Yomeddine cover is intentionally not displayed until publishing permission for the identifiable child in the supplied film poster is confirmed.
 
-Project-detail pages use only matching, local project media:
+The project-detail galleries use only matching, local project media:
 
-| Project | Image source or derivative | Editorial label |
+| Project | Gallery sources | Editorial label |
 | --- | --- | --- |
-| Nassajat El Nile | `assets/images/optimized/nassajat-alnil-project-poster.webp` (from `assets/images/projects/assetsimagesprojectsnassajat-alnil (1).webp`) | Project poster; no participant photos |
-| WUF12 | `assets/images/projects/assetsimagesprojectswuf12 (2).webp` | Camera setup at the event; no identifiable faces |
-| Mastery Academy | `assets/images/optimized/mastery-academy-infographic.webp` (from `assets/images/projects/mastery-academy (3).webp`) | Instructional-resource infographic |
-| Lawha | `assets/images/optimized/lawha.webp`; gallery: `assets/images/projects/lawha (6).webp`, `assets/images/projects/lawha (10).webp` | Selected stills from the short film |
-| Gelsa Orfeya | `assets/images/projects/gelsa-orfeya.webp`; gallery: `assets/images/projects/gelsa-orfeya (2).webp`, `assets/images/projects/gelsa-orfeya (3).webp` | Project visual material |
+| GAIA Global | `assets/images/projects/assetsimagesprojectsgaia-global (2).webp`; `assets/images/projects/assetsimagesprojectsgaia-global (4).webp` | Selected visual material from GAIA Global |
+| WUF12 | `assets/images/projects/assetsimagesprojectswuf12.webp` | Habitat for Humanity's participation at WUF12 |
+| Lawha | `assets/images/projects/lawha (6).webp`; `assets/images/projects/lawha (10).webp` | Selected stills from the short film |
+| Gelsa Orfeya | `assets/images/projects/gelsa-orfeya (2).webp`; `assets/images/projects/gelsa-orfeya (3).webp` | Project visual material |
 
-The service imagery uses the WUF12 camera-setup image for visual production, the Mastery infographic for cultural-program and creative-operations offers, and Nada's cultural-development study for market research. Offers without a clearly matching, cleared image retain CSS-generated artwork. Original source files remain untouched. Optimized derivatives in `assets/images/optimized/` are: Lawha (219 KB, 1116 × 1500), music-video documentation (43 KB, 1200 × 1800), Nassajat project poster (64 KB, 1200 × 675), and Mastery infographic (109 KB, 1200 × 1698). Archive-card and gallery images lazy-load and decode asynchronously; the homepage and About portraits are prioritized.
+The seven service cards now have matching image paths in both language arrays: WUF12 for visual production; Sawa Sawa for cultural coordination and instructional design; GAIA Global for brand storytelling and digital presence; Mastery Academy for creative operations; Nada's cultural-development study for market research; and GAIA Global for institutional and creative strategy. The source files remain untouched. Two separate derivatives in `assets/images/optimized/` are used for Lawha (219 KB, 1116 × 1500) and music-video documentation (43 KB, 1200 × 1800); the portrait and selected project images already have appropriate WebP sizes. Archive-card and gallery images lazy-load and decode asynchronously; the homepage portrait is prioritized.
 
-No PDF images were extracted. Original local assets were preferred, and existing project descriptions and URLs were retained. Identifiable participant and group imagery with unverified publication permission is withheld from project covers, galleries, service cards, and Studio thumbnails. This includes imagery associated with GAIA Global, Sawa Sawa, Nassajat workshops, Mastery Academy groups, Dar Al-Mabara, Makanuna initiatives, Al-Asmarat, Darb al-Ahmar, CARE Le Caire, and Delta Festival. The Yomeddine poster remains withheld because it depicts an identifiable child.
+No PDF images were extracted. The supplied portfolio references were used to confirm project context and captions; original local assets were preferred. The unassigned project-image records remain Al-Asmarat, Darb al-Ahmar tour, CARE Le Caire, Delta Festival, and Yomeddine (permission hold). Participant imagery is not published without appropriate permission.
 
 ## Adding blog posts
 
@@ -103,8 +99,8 @@ For UI changes, preview both Arabic and English, verify RTL/LTR and keyboard int
 ## Automatic source-change tracking
 
 <!-- AUTO-SYNC:START -->
-- Last sync (local time): `11 Nov 2026, 16:08:10 Africa/Cairo`
-- Last sync (UTC): `2026-11-11T14:08:10.355Z`
+- Last sync (local time): `11 Nov 2026, 13:49:39 Africa/Cairo`
+- Last sync (UTC): `2026-11-11T11:49:39.192Z`
 - Files detected in the latest sync: `README.md`
 - Retention: latest sync only; each update replaces this record instead of accumulating an old log.
 - This hook detects changed website source/assets; assistants must still update the project facts and open-item sections when those change.
