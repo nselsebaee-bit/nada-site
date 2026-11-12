@@ -106,6 +106,9 @@
     document.querySelectorAll("[data-home-aria]").forEach(function (node) {
       node.setAttribute("aria-label", copy.hero[node.getAttribute("data-home-aria")]);
     });
+    document.querySelectorAll("[data-home-alt]").forEach(function (node) {
+      node.setAttribute("alt", copy.hero[node.getAttribute("data-home-alt")]);
+    });
     document.querySelectorAll("[data-about]").forEach(function (node) {
       var value = aboutContent[node.getAttribute("data-about")];
       if (value !== undefined) node.textContent = value;
@@ -250,6 +253,7 @@
   function localizedProject(project) {
     var translated = language === "ar" ? {} : (project.en || {});
     var translatedMeta = language === "ar" ? [] : (englishProjectMeta[project.id] || []);
+    var gallerySources = new Set(project.image ? [project.image.split("/").pop()] : []);
     return {
       id: project.id,
       category: project.category,
@@ -261,11 +265,15 @@
       selectedWorksHeading: project.selectedWorksHeading ? project.selectedWorksHeading[language] : "",
       image: project.image,
       imageAlt: project.imageAlt ? project.imageAlt[language] : "",
-      gallery: (project.gallery || []).map(function (media) {
+      gallery: (project.gallery || []).filter(function (media) {
+        var source = media.src.split("/").pop();
+        if (gallerySources.has(source)) return false;
+        gallerySources.add(source);
+        return true;
+      }).map(function (media) {
         return {
           src: media.src,
-          alt: media.alt ? media.alt[language] : translated.title || project.title,
-          caption: media.caption ? media.caption[language] : ""
+          alt: media.alt ? media.alt[language] : translated.title || project.title
         };
       }),
       selectedWorks: (project.selectedWorks || []).map(function (work) {
@@ -295,27 +303,26 @@
     var card = element("article", "project-card");
     if (project.id === "selected-styling-work") card.classList.add("project-card-styling-work");
     if (project.id === "writing") card.classList.add("project-card-writing-feature");
+    if (!project.image) card.classList.add("project-card-no-image");
     var link = element("a", "project-card-link");
     link.href = "project.html?id=" + encodeURIComponent(project.id);
-    var image = element("div", "card-image media-placeholder");
-    image.setAttribute("aria-hidden", "true");
-    image.setAttribute("data-reveal", "image");
     if (project.image) {
+      var image = element("div", "card-image");
+      image.setAttribute("aria-hidden", "true");
+      image.setAttribute("data-reveal", "image");
       var photo = element("img", "card-photo");
       photo.src = project.image;
       photo.alt = item.imageAlt || item.title;
       photo.loading = "lazy";
       photo.decoding = "async";
       image.appendChild(photo);
-    } else {
-      image.appendChild(element("span", "placeholder-caption", copy.imageLater));
+      link.appendChild(image);
     }
     var meta = element("div", "card-meta");
     meta.appendChild(element("span", "category-tag", categoryName(project.category)));
     if (item.years) meta.appendChild(element("span", "card-years", item.years));
     var title = element("h3", "card-title", item.title);
     var cta = element("span", "text-link card-cta", copy.openProject);
-    link.appendChild(image);
     link.appendChild(meta);
     link.appendChild(title);
     if (item.summary && showSummary !== false) {
@@ -537,17 +544,15 @@
 
     var details = element("div", "studio-video-details");
     details.appendChild(element("span", "studio-video-index", String(index + 1).padStart(2, "0")));
-    details.appendChild(element("h2", "studio-video-title", item[language + "Title"]));
+    var title = element("h2", "studio-video-title");
     if (showProjectLink) {
-      var projectLink = element("a", "studio-project-link", copy.projectTransition + " ↗");
+      var projectLink = element("a", "studio-video-title-link", item[language + "Title"]);
       projectLink.href = "project.html?id=" + encodeURIComponent(item.projectId);
-      details.appendChild(projectLink);
+      title.appendChild(projectLink);
+    } else {
+      title.textContent = item[language + "Title"];
     }
-    var sourceLink = element("a", "studio-video-source", copy.originalVideo);
-    sourceLink.href = "https://youtu.be/" + encodeURIComponent(item.videoId);
-    sourceLink.target = "_blank";
-    sourceLink.rel = "noopener noreferrer";
-    details.appendChild(sourceLink);
+    details.appendChild(title);
     card.appendChild(details);
     return card;
   }
@@ -560,7 +565,6 @@
     photo.loading = "lazy";
     photo.decoding = "async";
     figure.appendChild(photo);
-    if (media.caption) figure.appendChild(element("figcaption", "project-gallery-caption", media.caption));
     return figure;
   }
 
@@ -571,30 +575,32 @@
     });
 
     var galleryHost = document.getElementById("studio-film-gallery");
+    var displayedImageSources = new Set();
     SITE.studioVisualProjects.forEach(function (projectId) {
       var project = SITE.projects.find(function (item) { return item.id === projectId; });
       if (!project) return;
       var item = localizedProject(project);
       var group = element("section", "studio-film-group");
       var heading = element("div", "studio-film-heading");
-      heading.appendChild(element("h3", "", item.title));
-      var projectLink = element("a", "text-link", copy.projectDetails);
+      var projectTitle = element("h3");
+      var projectLink = element("a", "studio-film-project-link", item.title);
       projectLink.href = "project.html?id=" + encodeURIComponent(project.id);
-      heading.appendChild(projectLink);
+      projectTitle.appendChild(projectLink);
+      heading.appendChild(projectTitle);
       group.appendChild(heading);
       var mediaGrid = element("div", "media-grid");
       var coverName = item.image ? item.image.split("/").pop() : "";
-      var coverInGallery = item.gallery.some(function (media) {
-        return media.src.split("/").pop() === coverName;
-      });
-      if (item.image && !coverInGallery) {
+      if (item.image && !displayedImageSources.has(coverName)) {
+        displayedImageSources.add(coverName);
         mediaGrid.appendChild(createProjectGalleryFigure({
           src: item.image,
-          alt: item.imageAlt || item.title,
-          caption: item.title
+          alt: item.imageAlt || item.title
         }));
       }
       item.gallery.forEach(function (media) {
+        var source = media.src.split("/").pop();
+        if (displayedImageSources.has(source)) return;
+        displayedImageSources.add(source);
         mediaGrid.appendChild(createProjectGalleryFigure(media));
       });
       group.appendChild(mediaGrid);
@@ -823,7 +829,6 @@
       coverPhoto.loading = "eager";
       coverPhoto.decoding = "async";
       heroImage.appendChild(coverPhoto);
-      if (item.organization) heroImage.appendChild(element("figcaption", "project-cover-caption", item.organization));
       host.appendChild(heroImage);
     }
 
@@ -928,13 +933,15 @@
       host.appendChild(projectVideoSection);
     }
 
-    var more = element("section", "section more-projects");
-    more.appendChild(element("h2", "", copy.moreProjects));
-    var related = SITE.projects.filter(function (candidate) {
-      return candidate.id !== project.id && candidate.category === project.category;
-    }).slice(0, 3);
-    renderProjectList(appendElement(more, "div", "project-grid"), related);
-    host.appendChild(more);
+    var contactPrompt = copy.projectContactCtas[item.category] || copy.projectContactCtas.default;
+    var contactCta = element("section", "project-contact-cta");
+    contactCta.appendChild(element("p", "eyebrow", copy.projectContactEyebrow));
+    contactCta.appendChild(element("h2", "", contactPrompt.title));
+    contactCta.appendChild(element("p", "", contactPrompt.text));
+    var contactLink = element("a", "button button-primary", copy.projectContactButton);
+    contactLink.href = "contact.html";
+    contactCta.appendChild(contactLink);
+    host.appendChild(contactCta);
   }
 
   function appendElement(parent, tag, className) {
@@ -1032,25 +1039,8 @@
   }
 
   function renderAbout() {
-    var galleryHost = document.getElementById("about-gallery");
-    SITE.aboutGallery[language].forEach(function (media) {
-      var figure = element("figure", "project-gallery-item about-gallery-item");
-      var photo = element("img", "project-gallery-image about-gallery-image");
-      photo.src = media.src;
-      photo.alt = media.alt;
-      photo.loading = "lazy";
-      photo.decoding = "async";
-      if (media.projectId) {
-        var projectLink = element("a", "about-gallery-link");
-        projectLink.href = "project.html?id=" + encodeURIComponent(media.projectId);
-        projectLink.appendChild(photo);
-        figure.appendChild(projectLink);
-      } else {
-        figure.appendChild(photo);
-      }
-      figure.appendChild(element("figcaption", "project-gallery-caption", media.caption));
-      galleryHost.appendChild(figure);
-    });
+    var portrait = document.querySelector(".about-hero-photo");
+    if (portrait) portrait.alt = aboutContent.portraitAlt;
 
     var competencies = document.getElementById("about-competencies");
     aboutContent.competencies.forEach(function (item, index) {
@@ -1085,7 +1075,17 @@
       var record = element("li", "about-training-record");
       var detail = element("div", "");
       detail.appendChild(element("h3", "", item.title));
-      detail.appendChild(element("p", "", item.issuer));
+      var issuer = element("p", "about-training-issuer");
+      if (item.issuerUrl) {
+        var issuerLink = element("a", "", item.issuer);
+        issuerLink.href = item.issuerUrl;
+        issuerLink.target = "_blank";
+        issuerLink.rel = "noopener noreferrer";
+        issuer.appendChild(issuerLink);
+      } else {
+        issuer.textContent = item.issuer;
+      }
+      detail.appendChild(issuer);
       record.appendChild(detail);
       var year = element("time", "about-training-year", item.year);
       year.setAttribute("dir", "ltr");

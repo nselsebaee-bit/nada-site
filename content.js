@@ -1,9 +1,8 @@
-function projectGallery(files, arAlt, enAlt, arCaption, enCaption) {
+function projectGallery(files, arAlt, enAlt) {
   return files.map(function (file) {
     return {
       src: "assets/images/projects/" + file,
-      alt: { ar: arAlt, en: enAlt },
-      caption: { ar: arCaption, en: enCaption }
+      alt: { ar: arAlt, en: enAlt }
     };
   });
 }
@@ -17,9 +16,7 @@ var makanunaLensGallery = projectGallery(
     "darb-al-ahmar-tour (4).webp"
   ],
   "صورة توثيقية من مشروعات عدسة مكاننا والدرب الأحمر",
-  "Documentary image from Makanuna Lens and Darb al-Ahmar projects",
-  "توثيق بصري للمكان والأنشطة في مشروعات مكاننا والدرب الأحمر",
-  "Visual documentation of place and activities in the Makanuna and Darb al-Ahmar projects"
+  "Documentary image from Makanuna Lens and Darb al-Ahmar projects"
 );
 
 var SITE = {
@@ -57,9 +54,7 @@ var SITE = {
       home: "الرئيسية",
       footerNote: "أرشيف مهني وأعمال مختارة",
       footerRights: "جميع الحقوق محفوظة",
-      imageLater: "مساحة صورة — تُضاف لاحقًا",
       openProject: "استكشاف المشروع",
-      projectDetails: "تفاصيل الخبرة",
       archiveEyebrow: "رحلة استثنائية",
       archiveTitle: "خبرات ومشاريع، لكل منها حكايتها",
       archiveIntro: "أرشيف يوثق الأدوار والمشاريع والمخرجات، مع صفحة مستقلة لتفاصيل كل مشروع ومواده المنشورة.",
@@ -76,7 +71,38 @@ var SITE = {
       workLabel: "نطاق العمل",
       outcomeLabel: "المخرجات والأدلة",
       relatedLabel: "مواد وروابط",
-      moreProjects: "مشاريع أخرى من الأرشيف",
+      projectContactButton: "لنتحدث عن مشروعك",
+      projectContactEyebrow: "مساحة للتعاون حول المشروع",
+      projectContactCtas: {
+        operations: {
+          title: "هل تريد تطوير حضور مشروعك الرقمي؟",
+          text: "لنتحدث عن المحتوى والمنصات والخطوات العملية التي تناسب أهدافك."
+        },
+        writing: {
+          title: "هل لديك فكرة تحتاج إلى كتابة؟",
+          text: "نناقش السيناريو أو المحتوى التحريري، والجمهور الذي تخاطبه الفكرة."
+        },
+        research: {
+          title: "هل يحتاج مشروعك إلى بحث أو أدوات تقييم؟",
+          text: "نحدد أسئلة البحث والمنهج والأدوات المناسبة لسياق المشروع."
+        },
+        visual: {
+          title: "هل لديك فعالية أو مشروع يحتاج إلى توثيق بصري؟",
+          text: "لنتحدث عن التغطية والإنتاج المرئي بما يلائم طبيعة الحدث واحتياجك."
+        },
+        education: {
+          title: "هل تطوّر دورة أو برنامجًا تدريبيًا؟",
+          text: "نناقش تصميم المحتوى وتجربة التعلّم وإنتاج المواد التعليمية."
+        },
+        community: {
+          title: "هل تعمل على مبادرة ثقافية أو مجتمعية؟",
+          text: "لنتحدث عن تصميم البرنامج وتنسيقه وتطوير الأدوات المناسبة لسياقه."
+        },
+        default: {
+          title: "هل لديك مشروع وتبحث عن شريك مناسب؟",
+          text: "شارك تفاصيل الفكرة لنحدد معًا نطاق العمل والخطوة التالية."
+        }
+      },
       notFoundTitle: "لم نعثر على هذه الصفحة",
       notFoundText: "قد يكون الرابط غير صحيح أو أن الصفحة غير متاحة.",
       articlesEyebrow: "المدونة",
@@ -134,20 +160,15 @@ var SITE = {
       backToTop: "العودة إلى أعلى الصفحة",
       previousPage: "العودة إلى الصفحة السابقة",
       playVideo: "تشغيل الفيديو: ",
-      projectTransition: "انتقال للمشروع",
       studioEyebrow: "الاستوديو",
       studioTitle: "مساحة للحكايات المرئية",
       studioIntro: "مجموعة من الفيديوهات والأعمال المرئية التي تعكس تنوع المشروعات والتجارب والأساليب الإبداعية.",
       studioCta: "استكشاف الاستوديو",
       studioVideosLabel: "فيديوهات مختارة من الاستوديو",
       projectVideosTitle: "فيديوهات المشروع",
-      originalVideo: "فتح مصدر الفيديو الأصلي ↗",
       studioWorkTitle: "مختارات من الأعمال المرئية",
       studioWorkIntro: "صور ثابتة وكواليس وأعمال مرئية مختارة من مشروعات متنوعة.",
       writingArchiveHeading: "خبرات الكتابة",
-      aboutGalleryEyebrow: "صور من الميدان",
-      aboutGalleryTitle: "صور شخصية وتوثيق بصري",
-      aboutGalleryIntro: "صور شخصية ومشاهد عمل موثقة، مع إبقاء كل صورة جماعية ضمن سياق مشروعها.",
       stylingWorkDetails: "تفاصيل الأدوار",
       servicesEyebrow: "مساحات للتعاون",
       servicesTitle: "خدمات تجمع الرؤية بالتنفيذ",
@@ -174,6 +195,7 @@ var SITE = {
         proof: "أكثر من 11 عامًا من الخبرة المهنية منذ 2014",
         portraitAlt: "صورة شخصية لندى السباعي",
         portraitCaption: "ندى السباعي",
+        studioImageAlt: "مشهد من فيلم لوحة، أحد الأعمال المرئية في الاستوديو",
         statYears: "+11",
         statYearsLabel: "عامًا من الخبرة منذ 2014",
         statFields: "5",
@@ -189,9 +211,7 @@ var SITE = {
       home: "Home",
       footerNote: "Professional archive and selected work",
       footerRights: "All rights reserved",
-      imageLater: "Image placeholder — added later",
       openProject: "Explore project",
-      projectDetails: "Project details",
       archiveEyebrow: "An exceptional journey",
       archiveTitle: "Experience and projects, each with its own story",
       archiveIntro: "Browse roles, projects and documented outputs. Open any project to explore its details and published materials.",
@@ -208,7 +228,38 @@ var SITE = {
       workLabel: "Scope of work",
       outcomeLabel: "Outputs and evidence",
       relatedLabel: "Materials and links",
-      moreProjects: "More projects from the archive",
+      projectContactButton: "Discuss your project",
+      projectContactEyebrow: "A next step for your project",
+      projectContactCtas: {
+        operations: {
+          title: "Looking to develop your project's digital presence?",
+          text: "Let's discuss the content, platforms and practical steps that fit your goals."
+        },
+        writing: {
+          title: "Do you have an idea that needs writing?",
+          text: "Let's talk about the screenplay or editorial content and the audience it should reach."
+        },
+        research: {
+          title: "Could your project use research or evaluation tools?",
+          text: "Let's define research questions, methods and tools suited to its context."
+        },
+        visual: {
+          title: "Do you have an event or project that needs visual documentation?",
+          text: "Let's discuss coverage and visual production shaped around the event and your needs."
+        },
+        education: {
+          title: "Developing a course or training program?",
+          text: "Let's discuss learning content, experience design and educational production."
+        },
+        community: {
+          title: "Working on a cultural or community initiative?",
+          text: "Let's discuss program design, coordination and tools suited to its context."
+        },
+        default: {
+          title: "Have a project and looking for the right collaborator?",
+          text: "Share the idea so we can define a suitable scope and next step."
+        }
+      },
       notFoundTitle: "Project not found",
       notFoundText: "The link may be incorrect or this page may be unavailable.",
       articlesEyebrow: "The blog",
@@ -266,20 +317,15 @@ var SITE = {
       backToTop: "Back to top",
       previousPage: "Go to previous page",
       playVideo: "Play video: ",
-      projectTransition: "Explore the project",
       studioEyebrow: "The studio",
       studioTitle: "A Space for Visual Stories",
       studioIntro: "A collection of videos and visual work reflecting a range of projects, experiences and creative approaches.",
       studioCta: "Explore the studio",
       studioVideosLabel: "Selected studio videos",
       projectVideosTitle: "Project videos",
-      originalVideo: "Open original video source ↗",
       studioWorkTitle: "Selected Visual Work",
       studioWorkIntro: "Selected visual materials and behind-the-scenes images from a range of projects.",
       writingArchiveHeading: "Writing Experience",
-      aboutGalleryEyebrow: "In the field",
-      aboutGalleryTitle: "Portraits & visual documentation",
-      aboutGalleryIntro: "Personal portraits and documented work, with each group image kept in its project context.",
       stylingWorkDetails: "Styling roles",
       servicesEyebrow: "Ways to work together",
       servicesTitle: "Services that connect vision with delivery",
@@ -306,6 +352,7 @@ var SITE = {
         proof: "More than 11 years of professional experience since 2014",
         portraitAlt: "Portrait of Nada Elsebaee",
         portraitCaption: "Nada Elsebaee",
+        studioImageAlt: "A still from Lawha, one of the studio's visual works",
         statYears: "+11",
         statYearsLabel: "years of experience since 2014",
         statFields: "5",
@@ -317,45 +364,44 @@ var SITE = {
   },
   aboutPage: {
     ar: {
-      subtitle: "خبرة تجمع بين الإبداع والمنهجية",
-      intro: "قيادية متخصصة واسعة الخبرات، تجمع بين المنهجية والإبداع برؤية عابرة للأطر الجامدة. أتنقل من التصميم وتطوير المناهج، إلى الإدارة الاستراتيجية للعمليات والتجارة الإلكترونية، وصناعة المحتوى والتوثيق البصري، مع توظيف التقنيات والأدوات مثل هندسة أوامر الذكاء الاصطناعي.",
-      experienceStory: "يمتد سجلي المهني لأكثر من 11 عامًا (2014–2026) في قيادة المنصات الرقمية وإدارتها، وتأسيس المقرات والمستودعات والأنظمة التشغيلية من الصفر. كما أدرت مبادرات ومشروعات مجتمعية وتنموية محلية ودولية بالتعاون مع جهات مثل UNESCO وCARE International وHabitat for Humanity وEUNIC وMakanuna.",
-      educationStory: "أجمع بين خلفية أكاديمية في علم النفس من جامعة عين شمس، ودبلومات تخصصية بتقدير ممتاز في التنمية الثقافية من جامعة القاهرة وإخراج الأفلام من أكاديمية بدرخان، إلى جانب مهارات في أتمتة مسارات العمل، وبناء قواعد البيانات على Notion وAirtable، وتصميم المقاييس السلوكية والأدلة التطبيقية.",
-      experienceLabel: "خبرة ممتدة",
+      subtitle: "الإبداع برؤية منهجية، من الفكرة إلى التنفيذ.",
+      intro: "أعمل عند تقاطع الإبداع والبحث والإدارة، وأهتم بتطوير المشروعات التي تجمع بين المحتوى والمعرفة والتنفيذ العملي.",
+      experienceStory: "على مدار مساري المهني، الذي بدأ عام 2014، تنقلت بين مجالات متعددة، من إدارة العمليات والتجارة الإلكترونية وتطوير أنظمة العمل، إلى البحث الثقافي وتصميم الأدوات والمناهج، وصناعة الأفلام والتوثيق البصري وإدارة الإنتاج الإبداعي.",
+      projectStory: "يساعدني هذا التنوع على فهم المشروعات من زوايا مختلفة؛ من فهم السياق وتحديد الاحتياجات، إلى تصميم الحلول وتنظيم الموارد والفرق، ثم إنتاج مخرجات واضحة وقابلة للتطبيق.",
+      partnersStory: "شاركت في تنفيذ وقيادة مشروعات ثقافية ومجتمعية وتنموية بالتعاون مع جهات ومؤسسات محلية ودولية، من بينها UNESCO وCARE International وHabitat for Humanity وEUNIC وMakanuna.",
+      beliefStory: "أؤمن أن الإبداع لا ينفصل عن المنهجية، وأن الأفكار الجيدة تحتاج إلى بحث وتخطيط وأنظمة عمل مناسبة حتى تتحول إلى نتائج ملموسة.",
+      experienceLabel: "خبرة تجمع بين مجالات متعددة",
       experienceValue: "2014–2026",
-      experienceCaption: "قيادة، تأسيس، وتشغيل",
-      heroVisualLabel: "منهجية × إبداع",
-      heroVisualCaption: "من الفكرة إلى نظام يعمل",
+      experienceCaption: "إدارة العمليات، البحث الثقافي، والإنتاج الإبداعي",
+      portraitAlt: "صورة شخصية مهنية لندى السباعي",
       workCta: "الأعمال والمشروعات",
       contactCta: "للتواصل",
       competenciesEyebrow: "مجالات العمل",
-      competenciesTitle: "كفاءات تتكامل لصناعة أثر",
-      competenciesCenter: "الخبرة",
+      competenciesTitle: "خبرات متكاملة من البحث إلى التنفيذ",
+      competenciesSummary: "من الفكرة إلى نظام يعمل.",
       competencies: [
         {
-          title: "الإدارة الاستراتيجية",
-          items: ["المراجعات التدقيقية للعمليات", "مراجعات النمو الاستراتيجي", "تصميم الهياكل التشغيلية للشركات"]
+          title: "إدارة المشروعات والعمليات",
+          items: ["تطوير وتنظيم العمليات التشغيلية", "تحليل العمليات وفرص التحسين", "تصميم هياكل ومسارات العمل", "إدارة وتنسيق فرق العمل", "إدارة عمليات التجارة الإلكترونية"]
         },
         {
-          title: "الأبحاث الثقافية والأكاديمية",
-          items: ["المقاييس السلوكية النوعية", "التحليل الاجتماعي", "تحليل شجرة المشكلات", "قياس الأثر المجتمعي"]
+          title: "البحث والتنمية الثقافية",
+          items: ["البحث والتحليل الاجتماعي والثقافي", "تصميم أدوات ومقاييس سلوكية", "تحليل المشكلات والسياقات المجتمعية", "إعداد الأدلة والمواد التطبيقية", "المشاركة في تصميم وتنفيذ المبادرات الثقافية والتنموية"]
         },
         {
           title: "الإنتاج الإبداعي والبصري",
-          items: [
-            "صناعة الأفلام الوثائقية",
-            "التصوير الفوتوغرافي",
-            "السرد البصري",
-            "الصياغة والرسومات التقنية",
-            "التصميم الجرافيكي"
-          ]
+          items: ["صناعة الأفلام الوثائقية", "التصوير الفوتوغرافي والتوثيق البصري", "تطوير السرد القصصي والبصري", "إدارة وتنسيق الإنتاج الإبداعي", "التصميم وإعداد المواد البصرية"]
         },
         {
-          title: "العمليات الرقمية",
-          items: ["إدارة التجارة الإلكترونية عبر Shopify", "هياكل ومنظومات البيانات على Notion", "تنسيق فرق العمل عن بُعد"]
+          title: "التعليم وتطوير المحتوى",
+          items: ["تطوير المحتوى والمواد التعليمية", "تصميم التجارب والأنشطة التعليمية", "إعداد الأدلة والمناهج التطبيقية", "تيسير الورش والأنشطة التشاركية"]
+        },
+        {
+          title: "الأنظمة الرقمية وأتمتة العمل",
+          items: ["إدارة منصات التجارة الإلكترونية، ومنها Shopify", "تنظيم قواعد البيانات باستخدام Notion وAirtable", "تصميم مسارات العمل الرقمية", "توظيف أدوات الذكاء الاصطناعي وهندسة الأوامر لدعم الإنتاج والعمليات"]
         }
       ],
-      educationEyebrow: "التكوين الأكاديمي",
+      educationEyebrow: "التعليم والمؤهلات",
       educationTitle: "التعليم والمؤهلات",
       education: [
         {
@@ -375,7 +421,7 @@ var SITE = {
         }
       ],
       trainingEyebrow: "التعلّم المستمر",
-      trainingTitle: "الشهادات والدورات التدريبية",
+      trainingTitle: "شهادات ودورات تدريبية مختارة",
       trainings: [
         {
           title: "التصميم التعليمي",
@@ -410,6 +456,7 @@ var SITE = {
         {
           title: "توقع المخاطر المتعلقة بالمشاريع (Anticipate Risks Related to Project)",
           issuer: "DisasterReady.org",
+          issuerUrl: "https://disasterready.org/",
           year: "2021"
         },
         {
@@ -425,46 +472,54 @@ var SITE = {
       ],
       publicationsEyebrow: "مختارات من الأعمال",
       publicationsTitle: "إصدارات وأعمال بارزة",
+      approachEyebrow: "منهج العمل",
+      approachTitle: "من فهم السياق إلى إنجاز ملموس",
+      approachIntro: "أتعامل مع كل مشروع باعتباره منظومة مترابطة، وليس مجرد مجموعة مهام منفصلة. أبدأ بفهم الاحتياج والسياق، ثم أحدد الأدوات والخبرات المناسبة، وأعمل على تحويل الفكرة إلى خطوات ومخرجات قابلة للتنفيذ.",
       ctaEyebrow: "لنتحدث عن مشروعك",
-      ctaTitle: "إبداع موجه بمنهجية، وكفاءة قائمة على الأنظمة.",
-      ctaText: "من تأسيس الأنظمة التشغيلية إلى تطوير الأدلة والمحتوى البصري، أدمج الخبرات المناسبة لبناء مخرجات واضحة وقابلة للتطبيق.",
-      metaTitle: "ندى السباعي | إدارة العمليات، الأبحاث والإنتاج البصري",
-      metaDescription: "ندى السباعي قيادية متخصصة في إدارة العمليات والتجارة الإلكترونية، والتصميم التعليمي، والأبحاث الثقافية، والإنتاج البصري، وهندسة أوامر الذكاء الاصطناعي، بخبرة تمتد لأكثر من 11 عامًا."
+      ctaTitle: "إبداع موجه بمنهجية، وخبرة تتحول إلى عمل ملموس.",
+      ctaText: "للمشروعات الثقافية والتنموية والإبداعية، ولتطوير المحتوى والعمليات وأنظمة العمل، يسعدني استكشاف فرص التعاون وتطوير حلول تتناسب مع احتياجات كل مشروع.",
+      metaTitle: "عن ندى السباعي | مختبر ندى السباعي",
+      metaDescription: "ندى السباعي تعمل عند تقاطع الإبداع والبحث والإدارة، بخبرة منذ 2014 في المشروعات الثقافية والعمليات والإنتاج الإبداعي والتعليمي والأنظمة الرقمية."
     },
     en: {
-      subtitle: "Operations Management, Instructional Design & Visual Production",
-      intro: "A multidisciplinary leader combining method and creativity with a perspective beyond rigid boundaries. My work spans instructional design and curriculum development, strategic operations and e-commerce management, content creation and visual documentation, as well as emerging tools such as AI prompt engineering.",
-      experienceStory: "My experience spans more than 11 years (2014–2026), leading and managing digital platforms and building offices, warehouses and operating systems from the ground up. I have also managed local and international community and development initiatives with organizations including UNESCO, CARE International, Habitat for Humanity, EUNIC and Makanuna.",
-      educationStory: "My academic background in psychology from Ain Shams University is complemented by diplomas with distinction in cultural development from Cairo University and film directing from Badrakhan Academy. My technical practice includes workflow automation, complex Notion and Airtable databases, behavioral scales and practical guides.",
-      experienceLabel: "Experience",
+      subtitle: "Creativity with a method, from idea to execution.",
+      intro: "I work at the intersection of creativity, research and management, developing projects that bring content, knowledge and practical delivery together.",
+      experienceStory: "Since beginning my professional path in 2014, I have worked across operations management, e-commerce and workflow development; cultural research and the design of tools and curricula; and filmmaking, visual documentation and creative production management.",
+      projectStory: "This range helps me understand projects from different angles: learning the context and needs, designing solutions, organizing resources and teams, and producing clear, practical outcomes.",
+      partnersStory: "I have contributed to and led cultural, community and development projects with local and international organizations, including UNESCO, CARE International, Habitat for Humanity, EUNIC and Makanuna.",
+      beliefStory: "I believe creativity and methodology belong together. Strong ideas need research, planning and suitable ways of working to become tangible results.",
+      experienceLabel: "Experience across connected fields",
       experienceValue: "2014–2026",
-      experienceCaption: "Leading, building, operating",
-      heroVisualLabel: "Method × Creativity",
-      heroVisualCaption: "From an idea to a working system",
+      experienceCaption: "Operations, cultural research & creative production",
+      portraitAlt: "Professional portrait of Nada Elsebaee",
       workCta: "Explore my work",
       contactCta: "Get in touch",
       competenciesEyebrow: "Areas of practice",
-      competenciesTitle: "Connected expertise, built for impact",
-      competenciesCenter: "EXPERTISE",
+      competenciesTitle: "Connected experience from research to delivery",
+      competenciesSummary: "From an idea to a working system.",
       competencies: [
         {
-          title: "Strategic Management",
-          items: ["Operational audits", "Strategic growth reviews", "Business blueprinting"]
+          title: "Project & Operations Management",
+          items: ["Developing and organizing operational processes", "Analyzing processes and improvement opportunities", "Designing work structures and workflows", "Managing and coordinating teams", "Managing e-commerce operations"]
         },
         {
-          title: "Cultural & Academic Research",
-          items: ["Qualitative behavioral scales", "Social analysis", "Problem tree analysis", "Community impact measurement"]
+          title: "Research & Cultural Development",
+          items: ["Social and cultural research and analysis", "Designing behavioral tools and scales", "Analyzing social issues and contexts", "Preparing practical guides and materials", "Contributing to cultural and development initiatives"]
         },
         {
           title: "Creative & Visual Production",
-          items: ["Documentary filmmaking", "Photography", "Visual storytelling", "Technical drafting", "Graphic design"]
+          items: ["Documentary filmmaking", "Photography and visual documentation", "Developing visual storytelling", "Managing and coordinating creative production", "Designing and preparing visual materials"]
         },
         {
-          title: "Digital Operations",
-          items: ["Shopify e-commerce management", "Notion data systems", "Remote team coordination"]
+          title: "Education & Content Development",
+          items: ["Developing learning content and materials", "Designing learning experiences and activities", "Preparing practical guides and curricula", "Facilitating participatory workshops and activities"]
+        },
+        {
+          title: "Digital Systems & Workflow Automation",
+          items: ["Managing e-commerce platforms, including Shopify", "Organizing databases with Notion and Airtable", "Designing digital workflows", "Using AI tools and prompt engineering to support production and operations"]
         }
       ],
-      educationEyebrow: "Academic foundations",
+      educationEyebrow: "Education & qualifications",
       educationTitle: "Education",
       education: [
         {
@@ -484,7 +539,7 @@ var SITE = {
         }
       ],
       trainingEyebrow: "Continuous learning",
-      trainingTitle: "Certifications & professional training",
+      trainingTitle: "Selected courses & professional training",
       trainings: [
         {
           title: "Instructional Design",
@@ -519,6 +574,7 @@ var SITE = {
         {
           title: "Anticipate Risks Related to Project",
           issuer: "DisasterReady.org",
+          issuerUrl: "https://disasterready.org/",
           year: "2021"
         },
         {
@@ -534,70 +590,15 @@ var SITE = {
       ],
       publicationsEyebrow: "Selected work",
       publicationsTitle: "Publications & notable media",
+      approachEyebrow: "My approach",
+      approachTitle: "From understanding context to tangible delivery",
+      approachIntro: "I treat each project as a connected system, not a set of isolated tasks. I start by understanding its needs and context, identify the right tools and expertise, then turn the idea into actionable steps and deliverables.",
       ctaEyebrow: "Let's discuss your project",
-      ctaTitle: "Looking for expertise that brings creativity and method together?",
-      ctaText: "From building operational systems to developing practical guides and visual content, I combine the right disciplines to create clear, usable outcomes.",
-      metaTitle: "Nada Elsebaee | Operations, Research & Visual Production",
-      metaDescription: "Nada Elsebaee is a multidisciplinary leader in operations and e-commerce, instructional design, cultural research, visual production and AI prompt engineering, with more than 11 years of experience."
+      ctaTitle: "Creativity guided by method, and experience turned into meaningful work.",
+      ctaText: "Whether you are working on a cultural, development or creative project, or need to develop content, operations or ways of working, I welcome the opportunity to explore collaboration and shape solutions around your project's needs.",
+      metaTitle: "About Nada Elsebaee | Nada Elsebaee Lab",
+      metaDescription: "Nada Elsebaee works across creativity, research and management, with experience since 2014 in cultural projects, operations, creative and educational production, and digital systems."
     }
-  },
-  aboutGallery: {
-    ar: [
-      {
-        src: "assets/images/projects/assetsimagesnada-portrait (4).webp",
-        alt: "صورة شخصية مهنية لندى السباعي",
-        caption: "ندى السباعي"
-      },
-      {
-        src: "assets/images/projects/assetsimagesnada-portrait (2).webp",
-        alt: "صورة شخصية لندى السباعي في القاهرة",
-        caption: "ندى السباعي"
-      },
-      {
-        src: "assets/images/optimized/music-video-documentation.webp",
-        alt: "ندى تستخدم كاميرا للتوثيق البصري",
-        caption: "التصوير والتوثيق البصري"
-      },
-      {
-        src: "assets/images/projects/assetsimagesnada-culturaldevelepment-college (3).webp",
-        alt: "ندى مع زملائها في دبلوم التنمية الثقافية والأستاذ الدكتور عماد أبو غازي",
-        caption: "زملاء دبلوم التنمية الثقافية والأستاذ الدكتور عماد أبو غازي في جامعة القاهرة"
-      },
-      {
-        src: "assets/images/projects/care-lecaire (2).webp",
-        alt: "صورة جماعية ضمن مشروع CARE International وLe Caire",
-        caption: "فريق ومشاركات مشروع CARE International وLe Caire",
-        projectId: "care-lecaire"
-      }
-    ],
-    en: [
-      {
-        src: "assets/images/projects/assetsimagesnada-portrait (4).webp",
-        alt: "Professional portrait of Nada Elsebaee",
-        caption: "Nada Elsebaee"
-      },
-      {
-        src: "assets/images/projects/assetsimagesnada-portrait (2).webp",
-        alt: "Portrait of Nada Elsebaee in Cairo",
-        caption: "Nada Elsebaee"
-      },
-      {
-        src: "assets/images/optimized/music-video-documentation.webp",
-        alt: "Nada using a camera for visual documentation",
-        caption: "Photography and visual documentation"
-      },
-      {
-        src: "assets/images/projects/assetsimagesnada-culturaldevelepment-college (3).webp",
-        alt: "Nada with her Cultural Development Diploma colleagues and Professor Dr. Emad Abu Ghazi",
-        caption: "Cultural Development Diploma colleagues and Professor Dr. Emad Abu Ghazi at Cairo University"
-      },
-      {
-        src: "assets/images/projects/care-lecaire (2).webp",
-        alt: "Group photo from the CARE International and Le Caire project",
-        caption: "CARE International and Le Caire project team and participants",
-        projectId: "care-lecaire"
-      }
-    ]
   },
   services: {
     ar: {
@@ -664,22 +665,6 @@ var SITE = {
             {
               label: "Mastery Academy: تأسيس فرع مصر والإنتاج الإبداعي",
               projectId: "mastery-academy"
-            }
-          ]
-        },
-        {
-          title: "العمليات الإبداعية وتجهيز بيئات العمل",
-          description: "تحليل خطوات العمل وتوثيقها، وإعداد أنظمة التشغيل وقواعد البيانات وتدفقات المخزون، وتجهيز الاستوديوهات وتنظيم مسؤوليات الفرق. تُستخدم أدوات الذكاء الاصطناعي والأتمتة لتقليل المهام المتكررة حين تكون مناسبة، مع إبقاء القرارات والمراجعة بيد الفريق.",
-          image: "assets/images/services/creative-operations.webp",
-          summary: "أنظمة تشغيل واستوديوهات وتدفقات عمل مدعومة بالأتمتة وأدوات الذكاء الاصطناعي المناسبة.",
-          examples: [
-            {
-              label: "Mastery Academy: تأسيس فرع مصر والإنتاج الإبداعي",
-              projectId: "mastery-academy"
-            },
-            {
-              label: "إدارة GAIA Global",
-              projectId: "gaia-global"
             }
           ]
         },
@@ -794,22 +779,6 @@ var SITE = {
           ]
         },
         {
-          title: "Creative Operations & Workplace Setup",
-          description: "Mapping workflows, documenting procedures, structuring databases and inventory flows, and setting up studios and team responsibilities. Automation and AI tools can reduce repetitive work where appropriate while leaving decisions and review with the team.",
-          image: "assets/images/services/creative-operations.webp",
-          summary: "Operational systems, studio setup and workflows supported by suitable automation and AI tools.",
-          examples: [
-            {
-              label: "Mastery Academy: Egypt setup & creative production",
-              projectId: "mastery-academy"
-            },
-            {
-              label: "GAIA Global operations",
-              projectId: "gaia-global"
-            }
-          ]
-        },
-        {
           title: "Digital Presence Management & Growth",
           description: "Selecting platforms for audience and goals, developing content plans and publishing calendars, coordinating production and reviewing performance. AI tools may support research and format adaptation without replacing editorial review or the organization's voice.",
           image: "assets/images/services/digital-presence.webp",
@@ -887,46 +856,46 @@ var SITE = {
   capabilities: {
     ar: [
       {
-        title: "العمليات والتجارة الإلكترونية",
-        text: "إدارة عمليات Shopify، تنسيق الموردين وسلاسل الإمداد، بناء مسارات عمل، وتنظيم قواعد بيانات العملاء."
+        title: "الفهم والبحث",
+        text: "تحليل السياق والاحتياجات، وجمع المعلومات، وتحديد المشكلات والفرص."
       },
       {
-        title: "البحث والتنمية الثقافية",
-        text: "تصميم أدوات بحث نوعي، أدلة تطبيقية، مقاييس سلوكية، ومشاريع ثقافية مرتبطة بالسياق."
+        title: "التصميم والتخطيط",
+        text: "تطوير الأفكار والأدوات والمحتوى، وتصميم الحلول ومسارات العمل المناسبة."
       },
       {
-        title: "التوثيق البصري وصناعة الأفلام",
-        text: "إنتاج وتوثيق بصري للمشاريع الثقافية والمجتمعية، من التخطيط الميداني إلى المخرجات المرئية."
+        title: "التنظيم والتنفيذ",
+        text: "تنسيق الموارد والفرق والعمليات، ومتابعة تنفيذ المشروع ومراحله المختلفة."
       },
       {
-        title: "التعليم والإنتاج الإبداعي",
-        text: "تطوير محتوى ومناهج تعليمية، تنسيق فرق الإنتاج، وإدارة تجهيزات الاستوديو."
+        title: "الإنتاج والتوثيق",
+        text: "تحويل الأفكار إلى مخرجات عملية وبصرية وتعليمية، مع توثيق التجربة ومراحل العمل."
       },
       {
-        title: "الذكاء الاصطناعي وأتمتة سير العمل",
-        text: "هندسة أوامر الذكاء الاصطناعي وتطبيق أدواته لدعم إدارة العمليات والمحتوى ومسارات العمل."
+        title: "التطوير والتحسين",
+        text: "مراجعة النتائج، وتحديد فرص التحسين، وتطوير الأنظمة والمخرجات وفق احتياجات المشروع."
       }
     ],
     en: [
       {
-        title: "Operations & e-commerce",
-        text: "Shopify operations, vendor and supply-chain coordination, workflow design and customer data organization."
+        title: "Understand & Research",
+        text: "Analyze context and needs, gather information, and identify challenges and opportunities."
       },
       {
-        title: "Research & cultural development",
-        text: "Qualitative research tools, applied guides, behavioral scales and context-based cultural projects."
+        title: "Design & Plan",
+        text: "Develop ideas, tools and content, then design suitable solutions and workflows."
       },
       {
-        title: "Visual documentation & filmmaking",
-        text: "Visual production and documentation for cultural and community projects, from field planning to finished work."
+        title: "Organize & Deliver",
+        text: "Coordinate resources, teams and operations, and follow the project's delivery and stages."
       },
       {
-        title: "Education & creative production",
-        text: "Learning content and curriculum development, production-team coordination and studio setup."
+        title: "Produce & Document",
+        text: "Turn ideas into practical, visual and educational outputs while documenting the experience and process."
       },
       {
-        title: "AI & workflow automation",
-        text: "AI prompt engineering and the use of AI tools to support operations, content and workflows."
+        title: "Develop & Improve",
+        text: "Review results, identify opportunities to improve, and refine systems and outputs to meet project needs."
       }
     ]
   },
@@ -1004,7 +973,7 @@ var SITE = {
       enTitle: "Galala University music video — behind-the-scenes documentation"
     }
   ],
-  studioVisualProjects: ["lawha", "gelsa-orfeya", "bara-geiby", "hakim-archive"],
+  studioVisualProjects: ["lawha", "gelsa-orfeya", "bara-geiby"],
   projects: [
     {
       id: "gaia-global",
@@ -1017,9 +986,7 @@ var SITE = {
           "assetsimagesprojectsgaia-global (4).webp"
         ],
         "صورة من تشكيلات مجوهرات GAIA Global",
-        "Image from GAIA Global jewellery collections",
-        "مواد مرئية من تشكيلات GAIA Global",
-        "Visual material from GAIA Global collections"
+        "Image from GAIA Global jewellery collections"
       ),
       years: "يونيو 2025 – يونيو 2026",
       organization: "GAIA Global",
@@ -1105,9 +1072,7 @@ var SITE = {
           "assetsimagesprojectsnassajat-alnil (5).webp"
         ],
         "صورة من أنشطة وحرف مشروع ناسجات النيل",
-        "Image from Weavers of the Nile craft and project activities",
-        "مواد مرئية مختارة من توثيق مشروع ناسجات النيل",
-        "Selected visual documentation from Weavers of the Nile"
+        "Image from Weavers of the Nile craft and project activities"
       ),
       years: "سبتمبر 2024",
       organization: "مبادرة مكاننا · علياء جاليري · مبادرة سيدات النوبة للحرف اليدوية · بتمويل الاتحاد الأوروبي وبالتعاون مع EUNIC مصر",
@@ -1145,10 +1110,6 @@ var SITE = {
           alt: {
             ar: "توثيق مشاركة Habitat for Humanity في المنتدى الحضري العالمي 12",
             en: "Documentation of Habitat for Humanity's WUF12 participation"
-          },
-          caption: {
-            ar: "مشاركة Habitat for Humanity في المنتدى الحضري العالمي 12",
-            en: "Habitat for Humanity's participation at WUF12"
           }
         }
       ],
@@ -1217,9 +1178,7 @@ var SITE = {
       gallery: projectGallery(
         ["assetsimagesprojectsalasmarat.webp", "assetsimagesprojectsalasmarat (2).webp"],
         "صورة توثيقية من مشروع الأسمرات",
-        "Documentary image from the Al-Asmarat project",
-        "مواد مرئية للمشروع محفوظة بتصميمها الأصلي",
-        "Project visuals preserved in their original design"
+        "Documentary image from the Al-Asmarat project"
       ),
       years: "2024",
       organization: "مبادرة مين بيربي مين · علياء جاليري · ورشة ستار ميتال · نظمت الورشة Habitat for Humanity بالشراكة مع مكاننا ومؤسسة بناء، وبالتعاون مع AASMT وتحت رعاية صندوق التنمية الحضرية",
@@ -1316,11 +1275,6 @@ var SITE = {
     {
       id: "hakim-archive",
       category: "visual",
-      image: "assets/images/optimized/music-video-documentation.webp",
-      imageAlt: {
-        ar: "ندى خلف الكاميرا أثناء التوثيق البصري",
-        en: "Nada behind the camera during visual documentation"
-      },
       years: "2018 – 2019",
       organization: "المكتب الخاص للفنان حكيم",
       role: "مسؤولة أرشيف رقمي ومصورة ومونتيرة",
@@ -1352,9 +1306,7 @@ var SITE = {
       gallery: projectGallery(
         ["care-lecaire (2).webp"],
         "صورة جماعية ضمن مشروع CARE International وLe Caire",
-        "Group photo from the CARE International and Le Caire project",
-        "فريق ومشاركات ضمن سياق مشروع CARE International وLe Caire",
-        "Team and participants in the context of the CARE International and Le Caire project"
+        "Group photo from the CARE International and Le Caire project"
       ),
       years: "2019",
       organization: "CARE International · Le Caire",
@@ -1383,7 +1335,6 @@ var SITE = {
     {
       id: "sky-events",
       category: "visual",
-      image: "assets/images/optimized/music-video-documentation.webp",
       years: "2015 – 2023 · دوام جزئي",
       organization: "Sky Event Management",
       role: "منسقة ومصورة فعاليات",
@@ -1483,9 +1434,7 @@ var SITE = {
           "lawha (17).webp"
         ],
         "صورة ثابتة أو مادة تصويرية من فيلم لوحة",
-        "Film still or production image from Lawha",
-        "مواد الفيلم المتاحة، مرتبة ضمن معرض مستقل لفيلم لوحة",
-        "Available film materials, shown in a dedicated Lawha gallery"
+        "Film still or production image from Lawha"
       ),
       years: "2019",
       organization: "فيلم مستقل · مهرجان رؤى للفيلم المصري القصير",
@@ -1547,10 +1496,6 @@ var SITE = {
           alt: {
             ar: "صورة من فيلم جلسة عرفية",
             en: "Image from Gelsa Orfeya"
-          },
-          caption: {
-            ar: "مواد مرئية من فيلم «جلسة عرفية»",
-            en: "Visual material from Gelsa Orfeya"
           }
         },
         {
@@ -1558,10 +1503,6 @@ var SITE = {
           alt: {
             ar: "صورة من فيلم جلسة عرفية",
             en: "Image from Gelsa Orfeya"
-          },
-          caption: {
-            ar: "مواد مرئية من فيلم «جلسة عرفية»",
-            en: "Visual material from Gelsa Orfeya"
           }
         }
       ],
@@ -1590,9 +1531,7 @@ var SITE = {
       gallery: projectGallery(
         ["bara-geiby (2).webp"],
         "صورة توثيقية من كواليس مسرحية بره جيبي",
-        "Behind-the-scenes image from Bara Geiby",
-        "توثيق مسرحي من «بره جيبي»",
-        "Theatre documentation from Bara Geiby"
+        "Behind-the-scenes image from Bara Geiby"
       ),
       years: "2018",
       organization: "مسرح مستقل",
@@ -1617,6 +1556,11 @@ var SITE = {
       category: "writing",
       archivePriority: true,
       image: "assets/images/projects/screenplays.webp",
+      gallery: projectGallery(
+        ["assetsimagesnada-culturaldevelepment-college (3).webp"],
+        "صورة جماعية لزملاء دبلوم التنمية الثقافية بجامعة القاهرة",
+        "Cultural Development Diploma cohort at Cairo University"
+      ),
       years: "",
       role: "كاتبة سيناريو ومحتوى وباحثة في مشروعات ثقافية",
       title: "خبرات في الكتابة — سيناريو ومحتوى وبحث",
@@ -1682,11 +1626,6 @@ var SITE = {
     {
       id: "sinai-community",
       category: "community",
-      image: "assets/images/optimized/music-video-documentation.webp",
-      imageAlt: {
-        ar: "ندى خلف الكاميرا أثناء التوثيق البصري",
-        en: "Nada behind the camera during visual documentation"
-      },
       years: "يناير – مايو 2020",
       organization: "فريق فني مستقل · جنوب سيناء",
       role: "فنانة جرافيتي ومشاركة بيئية",
@@ -1711,8 +1650,6 @@ var SITE = {
     {
       id: "actor-showreels",
       category: "visual",
-      image: "assets/images/projects/actor-showreels.webp",
-    imageType: "generated",
       years: "2018 – 2019",
       organization: "مشروع شوريلات للممثلين",
       role: "كاتبة ومخرجة ومونتيرة",
@@ -1738,9 +1675,7 @@ var SITE = {
       gallery: projectGallery(
         ["delta-festival (2).webp", "delta-festival (3).webp", "delta-festival (4).webp"],
         "صورة من فعالية Delta Little Queen Festival",
-        "Image from the Delta Little Queen Festival",
-        "توثيق مرئي لفعالية Delta Little Queen Festival",
-        "Visual documentation of the Delta Little Queen Festival"
+        "Image from the Delta Little Queen Festival"
       ),
       years: "2018",
       organization: "مهرجان Delta Little Queen · المنصورة",
