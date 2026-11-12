@@ -23,25 +23,19 @@
     "nassajat-alnil": ["September 2024", "Makanuna Initiative · Aliaa Gallery · Nubian Women Initiative for Handcrafts · EU-funded with EUNIC Egypt"],
     "wuf12": ["November 2024", "Habitat for Humanity · World Urban Forum 12"],
     "dar-al-mabra": ["2025 – 2026", "Dar Al-Mabara Orphanage · Makanuna Foundation"],
-    "makanuna-visual": ["July 2024 – 2025", "Makanuna Foundation and project partners"],
     "alasmarat": ["2024", "Meen Byraby Meen Initiative · Aliaa Gallery · Star Metal Workshop · Organized by Habitat for Humanity with Makanuna and BENAA Foundation; in collaboration with AASMT under the patronage of UDF"],
-    "darb-al-ahmar-tour": ["", "Makanuna · Soura & Hekaya"],
+    "darb-al-ahmar-tour": ["2025", "Makanuna · Soura & Hekaya"],
     "mastery-academy": ["Setup: 2018–2019 · Role: Jan 2021 – Jun 2022", "Mastery Academy"],
-    "on-time-pioneers": ["2019 – 2020", "On Time Group · Pioneers Academy"],
     "hakim-archive": ["2018 – 2019", "Private office of singer Hakim"],
     "care-lecaire": ["2019", "CARE International · Le Caire"],
     "sky-events": ["2015 – 2023 · Part-time", "Sky Event Management"],
-    "yomeddine": ["2015", "Yomeddine"],
+    "selected-styling-work": ["2014 – 2015", "Selected styling work"],
     "lawha": ["2019", "Independent film · Visions Cairo Short Film Festival"],
     "independent-films": ["Since 2017", "Independent film and theatre projects"],
     "gelsa-orfeya": ["2018", "Independent film"],
     "bara-geiby": ["2018", "Independent theatre"],
-    "screenplays": ["", "Screenwriting projects"],
-    "music-video-documentation": ["", "Music video production"],
     "sinai-community": ["January – May 2020", "Independent arts team · South Sinai"],
-    "palestinian-training": ["2022", "Community training events"],
     "actor-showreels": ["2018 – 2019", "Actor showreel project"],
-    "ten-tv": ["2014 – 2015", "TEN TV"],
     "delta-festival": ["2018", "Delta Little Queen Festival · Mansoura"]
   };
 
@@ -264,7 +258,9 @@
       role: translated.role || project.role,
       title: translated.title || project.title,
       summary: translated.summary || project.summary,
+      selectedWorksHeading: project.selectedWorksHeading ? project.selectedWorksHeading[language] : "",
       image: project.image,
+      imageAlt: project.imageAlt ? project.imageAlt[language] : "",
       gallery: (project.gallery || []).map(function (media) {
         return {
           src: media.src,
@@ -272,9 +268,20 @@
           caption: media.caption ? media.caption[language] : ""
         };
       }),
+      selectedWorks: (project.selectedWorks || []).map(function (work) {
+        return {
+          title: work.title[language],
+          role: work.role[language],
+          years: work.years || "",
+          image: work.image || "",
+          alt: work.alt ? work.alt[language] : work.title[language]
+        };
+      }),
       scope: translated.scope || project.scope,
       outcomes: translated.outcomes || project.outcomes,
-      links: project.links
+      links: (project.links || []).map(function (link) {
+        return [typeof link[0] === "object" ? link[0][language] : link[0], link[1]];
+      })
     };
   }
 
@@ -283,9 +290,11 @@
     return category ? category[language] : "";
   }
 
-  function createProjectCard(project) {
+  function createProjectCard(project, showSummary) {
     var item = localizedProject(project);
     var card = element("article", "project-card");
+    if (project.id === "selected-styling-work") card.classList.add("project-card-styling-work");
+    if (project.id === "writing") card.classList.add("project-card-writing-feature");
     var link = element("a", "project-card-link");
     link.href = "project.html?id=" + encodeURIComponent(project.id);
     var image = element("div", "card-image media-placeholder");
@@ -294,7 +303,7 @@
     if (project.image) {
       var photo = element("img", "card-photo");
       photo.src = project.image;
-      photo.alt = item.title;
+      photo.alt = item.imageAlt || item.title;
       photo.loading = "lazy";
       photo.decoding = "async";
       image.appendChild(photo);
@@ -305,21 +314,22 @@
     meta.appendChild(element("span", "category-tag", categoryName(project.category)));
     if (item.years) meta.appendChild(element("span", "card-years", item.years));
     var title = element("h3", "card-title", item.title);
-    var summary = element("p", "card-summary", item.summary);
     var cta = element("span", "text-link card-cta", copy.openProject);
     link.appendChild(image);
     link.appendChild(meta);
     link.appendChild(title);
-    link.appendChild(summary);
+    if (item.summary && showSummary !== false) {
+      link.appendChild(element("p", "card-summary", item.summary));
+    }
     link.appendChild(cta);
     card.appendChild(link);
     return card;
   }
 
-  function renderProjectList(container, projects) {
+  function renderProjectList(container, projects, showSummaries) {
     container.replaceChildren();
     projects.forEach(function (project) {
-      container.appendChild(createProjectCard(project));
+      container.appendChild(createProjectCard(project, showSummaries));
     });
   }
 
@@ -398,7 +408,7 @@
     var previous = document.getElementById("experience-previous");
     var next = document.getElementById("experience-next");
     var orderedProjects = featured.map(function (item) { return item.project; });
-    renderProjectList(track, orderedProjects);
+    renderProjectList(track, orderedProjects, false);
 
     var years = Array.from(new Set(featured.reduce(function (allYears, item) {
       return allYears.concat(item.years);
@@ -497,44 +507,98 @@
     document.getElementById("services-email").href = "mailto:" + SITE.email;
   }
 
-  function renderStudio() {
-    var host = document.getElementById("studio-videos");
-    SITE.studioVideos.forEach(function (item, index) {
-      var card = element("article", "studio-video-card");
-      var media = element("div", "studio-video-media");
-      var thumbnail = element("img", "studio-video-thumbnail");
-      thumbnail.src = "https://i.ytimg.com/vi/" + encodeURIComponent(item.videoId) + "/hqdefault.jpg";
-      thumbnail.alt = "";
-      thumbnail.loading = "lazy";
-      thumbnail.decoding = "async";
-      thumbnail.addEventListener("error", function () {
-        thumbnail.classList.add("is-unavailable");
-      });
-      var playButton = element("button", "studio-video-play", "▶");
-      playButton.type = "button";
-      playButton.setAttribute("aria-label", copy.playVideo + item[language + "Title"]);
-      media.appendChild(thumbnail);
-      media.appendChild(playButton);
-      playButton.addEventListener("click", function () {
-        var frame = document.createElement("iframe");
-        frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(item.videoId) + "?autoplay=1&rel=0";
-        frame.title = item[language + "Title"];
-        frame.loading = "lazy";
-        frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-        frame.allowFullscreen = true;
-        frame.referrerPolicy = "strict-origin-when-cross-origin";
-        media.replaceChildren(frame);
-      });
-      card.appendChild(media);
+  function createStudioVideoCard(item, index, showProjectLink) {
+    var card = element("article", "studio-video-card");
+    var media = element("div", "studio-video-media");
+    var thumbnail = element("img", "studio-video-thumbnail");
+    thumbnail.src = "https://i.ytimg.com/vi/" + encodeURIComponent(item.videoId) + "/hqdefault.jpg";
+    thumbnail.alt = "";
+    thumbnail.loading = "lazy";
+    thumbnail.decoding = "async";
+    thumbnail.addEventListener("error", function () {
+      thumbnail.classList.add("is-unavailable");
+    });
+    var playButton = element("button", "studio-video-play", "▶");
+    playButton.type = "button";
+    playButton.setAttribute("aria-label", copy.playVideo + item[language + "Title"]);
+    media.appendChild(thumbnail);
+    media.appendChild(playButton);
+    playButton.addEventListener("click", function () {
+      var frame = document.createElement("iframe");
+      frame.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(item.videoId) + "?autoplay=1&rel=0";
+      frame.title = item[language + "Title"];
+      frame.loading = "lazy";
+      frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = "strict-origin-when-cross-origin";
+      media.replaceChildren(frame);
+    });
+    card.appendChild(media);
 
-      var details = element("div", "studio-video-details");
-      details.appendChild(element("span", "studio-video-index", String(index + 1).padStart(2, "0")));
-      details.appendChild(element("h2", "studio-video-title", item[language + "Title"]));
+    var details = element("div", "studio-video-details");
+    details.appendChild(element("span", "studio-video-index", String(index + 1).padStart(2, "0")));
+    details.appendChild(element("h2", "studio-video-title", item[language + "Title"]));
+    if (showProjectLink) {
       var projectLink = element("a", "studio-project-link", copy.projectTransition + " ↗");
       projectLink.href = "project.html?id=" + encodeURIComponent(item.projectId);
       details.appendChild(projectLink);
-      card.appendChild(details);
-      host.appendChild(card);
+    }
+    var sourceLink = element("a", "studio-video-source", copy.originalVideo);
+    sourceLink.href = "https://youtu.be/" + encodeURIComponent(item.videoId);
+    sourceLink.target = "_blank";
+    sourceLink.rel = "noopener noreferrer";
+    details.appendChild(sourceLink);
+    card.appendChild(details);
+    return card;
+  }
+
+  function createProjectGalleryFigure(media) {
+    var figure = element("figure", "project-gallery-item");
+    var photo = element("img", "project-gallery-image");
+    photo.src = media.src;
+    photo.alt = media.alt;
+    photo.loading = "lazy";
+    photo.decoding = "async";
+    figure.appendChild(photo);
+    if (media.caption) figure.appendChild(element("figcaption", "project-gallery-caption", media.caption));
+    return figure;
+  }
+
+  function renderStudio() {
+    var host = document.getElementById("studio-videos");
+    SITE.studioVideos.forEach(function (item, index) {
+      host.appendChild(createStudioVideoCard(item, index, true));
+    });
+
+    var galleryHost = document.getElementById("studio-film-gallery");
+    SITE.studioVisualProjects.forEach(function (projectId) {
+      var project = SITE.projects.find(function (item) { return item.id === projectId; });
+      if (!project) return;
+      var item = localizedProject(project);
+      var group = element("section", "studio-film-group");
+      var heading = element("div", "studio-film-heading");
+      heading.appendChild(element("h3", "", item.title));
+      var projectLink = element("a", "text-link", copy.projectDetails);
+      projectLink.href = "project.html?id=" + encodeURIComponent(project.id);
+      heading.appendChild(projectLink);
+      group.appendChild(heading);
+      var mediaGrid = element("div", "media-grid");
+      var coverName = item.image ? item.image.split("/").pop() : "";
+      var coverInGallery = item.gallery.some(function (media) {
+        return media.src.split("/").pop() === coverName;
+      });
+      if (item.image && !coverInGallery) {
+        mediaGrid.appendChild(createProjectGalleryFigure({
+          src: item.image,
+          alt: item.imageAlt || item.title,
+          caption: item.title
+        }));
+      }
+      item.gallery.forEach(function (media) {
+        mediaGrid.appendChild(createProjectGalleryFigure(media));
+      });
+      group.appendChild(mediaGrid);
+      galleryHost.appendChild(group);
     });
   }
 
@@ -587,6 +651,14 @@
       });
       resultsHost.replaceChildren();
       if (activeYear === "all") {
+        var prioritizedProjects = matches.filter(function (project) { return project.archivePriority; });
+        if (prioritizedProjects.length) {
+          var prioritySection = element("section", "timeline-year-section archive-priority-section");
+          prioritySection.id = "archive-priority";
+          prioritySection.appendChild(element("h2", "timeline-year-heading", copy.writingArchiveHeading));
+          renderProjectList(appendElement(prioritySection, "div", "project-grid"), prioritizedProjects, false);
+          resultsHost.appendChild(prioritySection);
+        }
         var yearsToShow = sortedYears;
         yearsToShow.forEach(function (year) {
           var yearProjects = matches.filter(function (project) {
@@ -597,15 +669,17 @@
           var section = element("section", "timeline-year-section");
           section.id = "year-" + year;
           section.appendChild(element("h2", "timeline-year-heading", year));
-          renderProjectList(appendElement(section, "div", "project-grid"), yearProjects);
+          renderProjectList(appendElement(section, "div", "project-grid"), yearProjects, false);
           resultsHost.appendChild(section);
         });
-        var undated = matches.filter(function (project) { return projectYears[project.id].length === 0; });
+        var undated = matches.filter(function (project) {
+          return projectYears[project.id].length === 0 && !project.archivePriority;
+        });
         if (undated.length) {
           var undatedSection = element("section", "timeline-year-section");
           undatedSection.id = "year-undated";
           undatedSection.appendChild(element("h2", "timeline-year-heading", isArabic ? "دون تاريخ محدد" : "Date not specified"));
-          renderProjectList(appendElement(undatedSection, "div", "project-grid"), undated);
+          renderProjectList(appendElement(undatedSection, "div", "project-grid"), undated, false);
           resultsHost.appendChild(undatedSection);
         }
       } else {
@@ -613,7 +687,7 @@
         selectedSection.id = "year-" + activeYear;
         selectedSection.appendChild(element("h2", "timeline-year-heading", activeYear));
         if (matches.length) {
-          renderProjectList(appendElement(selectedSection, "div", "project-grid"), matches);
+          renderProjectList(appendElement(selectedSection, "div", "project-grid"), matches, false);
         } else {
           selectedSection.appendChild(element("p", "empty-year", isArabic ? "لا توجد خبرات في هذا المجال خلال هذه السنة." : "No experience in this field is listed for this year."));
         }
@@ -711,7 +785,15 @@
 
   function renderProject() {
     var host = document.getElementById("project-detail");
-    var id = new URLSearchParams(window.location.search).get("id");
+    var requestedId = new URLSearchParams(window.location.search).get("id");
+    var idAliases = {
+      "screenplays": "writing",
+      "yomeddine": "selected-styling-work",
+      "ten-tv": "selected-styling-work",
+      "makanuna-visual": "darb-al-ahmar-tour",
+      "music-video-documentation": "sky-events"
+    };
+    var id = idAliases[requestedId] || requestedId;
     var project = SITE.projects.find(function (item) { return item.id === id; });
     if (!project) {
       host.appendChild(element("h1", "", copy.notFoundTitle));
@@ -737,7 +819,7 @@
       var heroImage = element("figure", "project-cover media-placeholder");
       var coverPhoto = element("img", "project-cover-photo");
       coverPhoto.src = item.image;
-      coverPhoto.alt = item.title;
+      coverPhoto.alt = item.imageAlt || item.title;
       coverPhoto.loading = "eager";
       coverPhoto.decoding = "async";
       heroImage.appendChild(coverPhoto);
@@ -777,29 +859,48 @@
     }
     host.appendChild(details);
 
-    var galleryItems = item.gallery || [];
-    if (galleryItems.length || (project.links && project.links.length)) {
+    if (item.selectedWorks.length) {
+      var selectedWorks = element("section", "project-selected-works");
+      selectedWorks.appendChild(element("p", "eyebrow", item.selectedWorksHeading || copy.stylingWorkDetails));
+      var workGrid = element("div", "selected-work-grid");
+      item.selectedWorks.forEach(function (work) {
+        var workCard = element("article", "selected-work-card");
+        if (work.image) {
+          var figure = element("figure", "selected-work-visual");
+          var photo = element("img", "selected-work-image");
+          photo.src = work.image;
+          photo.alt = work.alt;
+          photo.loading = "lazy";
+          photo.decoding = "async";
+          figure.appendChild(photo);
+          workCard.appendChild(figure);
+        }
+        workCard.appendChild(element("h3", "", work.title));
+        workCard.appendChild(element("p", "selected-work-role", work.role));
+        if (work.years) workCard.appendChild(element("p", "selected-work-years", work.years));
+        workGrid.appendChild(workCard);
+      });
+      selectedWorks.appendChild(workGrid);
+      host.appendChild(selectedWorks);
+    }
+
+    var galleryItems = (item.gallery || []).filter(function (media) {
+      return media.src !== item.image;
+    });
+    if (galleryItems.length || item.links.length) {
       var gallery = element("section", "project-gallery");
       gallery.appendChild(element("p", "eyebrow", copy.relatedLabel));
       if (galleryItems.length) {
         var mediaGrid = element("div", "media-grid");
         galleryItems.forEach(function (media) {
-          var figure = element("figure", "project-gallery-item");
-          var photo = element("img", "project-gallery-image");
-          photo.src = media.src;
-          photo.alt = media.alt;
-          photo.loading = "lazy";
-          photo.decoding = "async";
-          figure.appendChild(photo);
-          if (media.caption) figure.appendChild(element("figcaption", "project-gallery-caption", media.caption));
-          mediaGrid.appendChild(figure);
+          mediaGrid.appendChild(createProjectGalleryFigure(media));
         });
         gallery.appendChild(mediaGrid);
       }
 
-      if (project.links && project.links.length) {
+      if (item.links.length) {
         var links = element("ul", "media-links");
-        project.links.forEach(function (linkData) {
+        item.links.forEach(function (linkData) {
           var linkItem = element("li");
           var link = element("a", "text-link", linkData[0]);
           link.href = linkData[1];
@@ -811,6 +912,20 @@
         gallery.appendChild(links);
       }
       host.appendChild(gallery);
+    }
+
+    var projectVideos = SITE.studioVideos.filter(function (video) {
+      return video.projectId === project.id;
+    });
+    if (projectVideos.length) {
+      var projectVideoSection = element("section", "project-videos");
+      projectVideoSection.appendChild(element("p", "eyebrow", copy.projectVideosTitle));
+      var videoGrid = element("div", "studio-video-grid project-video-grid");
+      projectVideos.forEach(function (video, index) {
+        videoGrid.appendChild(createStudioVideoCard(video, index, false));
+      });
+      projectVideoSection.appendChild(videoGrid);
+      host.appendChild(projectVideoSection);
     }
 
     var more = element("section", "section more-projects");
@@ -917,6 +1032,26 @@
   }
 
   function renderAbout() {
+    var galleryHost = document.getElementById("about-gallery");
+    SITE.aboutGallery[language].forEach(function (media) {
+      var figure = element("figure", "project-gallery-item about-gallery-item");
+      var photo = element("img", "project-gallery-image about-gallery-image");
+      photo.src = media.src;
+      photo.alt = media.alt;
+      photo.loading = "lazy";
+      photo.decoding = "async";
+      if (media.projectId) {
+        var projectLink = element("a", "about-gallery-link");
+        projectLink.href = "project.html?id=" + encodeURIComponent(media.projectId);
+        projectLink.appendChild(photo);
+        figure.appendChild(projectLink);
+      } else {
+        figure.appendChild(photo);
+      }
+      figure.appendChild(element("figcaption", "project-gallery-caption", media.caption));
+      galleryHost.appendChild(figure);
+    });
+
     var competencies = document.getElementById("about-competencies");
     aboutContent.competencies.forEach(function (item, index) {
       var card = element("article", "about-competency-card about-competency-card-" + (index + 1));

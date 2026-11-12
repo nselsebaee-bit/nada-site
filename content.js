@@ -1,3 +1,27 @@
+function projectGallery(files, arAlt, enAlt, arCaption, enCaption) {
+  return files.map(function (file) {
+    return {
+      src: "assets/images/projects/" + file,
+      alt: { ar: arAlt, en: enAlt },
+      caption: { ar: arCaption, en: enCaption }
+    };
+  });
+}
+
+var makanunaLensGallery = projectGallery(
+  [
+    "makanuna-visual.webp",
+    "darb-al-ahmar-tour.webp",
+    "darb-al-ahmar-tour (2).webp",
+    "darb-al-ahmar-tour (3).webp",
+    "darb-al-ahmar-tour (4).webp"
+  ],
+  "صورة توثيقية من مشروعات عدسة مكاننا والدرب الأحمر",
+  "Documentary image from Makanuna Lens and Darb al-Ahmar projects",
+  "توثيق بصري للمكان والأنشطة في مشروعات مكاننا والدرب الأحمر",
+  "Visual documentation of place and activities in the Makanuna and Darb al-Ahmar projects"
+);
+
 var SITE = {
   brand: {
     ar: "مختبر ندى السباعي",
@@ -116,6 +140,15 @@ var SITE = {
       studioIntro: "مجموعة من الفيديوهات والأعمال المرئية التي تعكس تنوع المشروعات والتجارب والأساليب الإبداعية.",
       studioCta: "استكشاف الاستوديو",
       studioVideosLabel: "فيديوهات مختارة من الاستوديو",
+      projectVideosTitle: "فيديوهات المشروع",
+      originalVideo: "فتح مصدر الفيديو الأصلي ↗",
+      studioWorkTitle: "مختارات من الأعمال المرئية",
+      studioWorkIntro: "صور ثابتة وكواليس وأعمال مرئية مختارة من مشروعات متنوعة.",
+      writingArchiveHeading: "خبرات الكتابة",
+      aboutGalleryEyebrow: "صور من الميدان",
+      aboutGalleryTitle: "صور شخصية وتوثيق بصري",
+      aboutGalleryIntro: "صور شخصية ومشاهد عمل موثقة، مع إبقاء كل صورة جماعية ضمن سياق مشروعها.",
+      stylingWorkDetails: "تفاصيل الأدوار",
       servicesEyebrow: "مساحات للتعاون",
       servicesTitle: "خدمات تجمع الرؤية بالتنفيذ",
       servicesIntro: "حلول عملية مصممة للشركات والمنظمات غير الحكومية والكيانات الثقافية والمشاريع الإعلامية.",
@@ -134,8 +167,8 @@ var SITE = {
       hero: {
         eyebrow: "مختبر ندى السباعي | القاهرة، مصر",
         headline: "ابتكار تجربة استثنائية",
-        subtitle: "عمليات وتجارة إلكترونية · تنمية ثقافية · بحث وتصميم تعليمي · إنتاج بصري · ذكاء اصطناعي",
-        intro: "بناء أنظمة عمل وأصمم أدوات ومحتوى وتوثيق مشاريع — من عالم التجارة الإلكترونية إلى المبادرات الثقافية والمجتمعية.",
+        subtitle: "إنتاج بصري · إدارة ثقافية-فنية · بحث وتصميم تعليمي · عمليات وتجارة إلكترونية · ذكاء اصطناعي",
+        intro: "وسائط متعددة · توثيق إبداعي — بناء أنظمة عمل وتصميم أدوات ومحتوى إبداعي، من عالم المبادرات الثقافية والمجتمعية إلى عالم التجارة الإلكترونية.",
         projectsCta: "عرض أرشيف الخبرات",
         contactCta: "للتواصل والتعاون",
         proof: "أكثر من 11 عامًا من الخبرة المهنية منذ 2014",
@@ -239,6 +272,15 @@ var SITE = {
       studioIntro: "A collection of videos and visual work reflecting a range of projects, experiences and creative approaches.",
       studioCta: "Explore the studio",
       studioVideosLabel: "Selected studio videos",
+      projectVideosTitle: "Project videos",
+      originalVideo: "Open original video source ↗",
+      studioWorkTitle: "Selected Visual Work",
+      studioWorkIntro: "Selected visual materials and behind-the-scenes images from a range of projects.",
+      writingArchiveHeading: "Writing Experience",
+      aboutGalleryEyebrow: "In the field",
+      aboutGalleryTitle: "Portraits & visual documentation",
+      aboutGalleryIntro: "Personal portraits and documented work, with each group image kept in its project context.",
+      stylingWorkDetails: "Styling roles",
       servicesEyebrow: "Ways to work together",
       servicesTitle: "Services that connect vision with delivery",
       servicesIntro: "Practical solutions for companies, NGOs, cultural organizations and media projects.",
@@ -257,8 +299,8 @@ var SITE = {
       hero: {
         eyebrow: "Nada Elsebaee Lab | Cairo, Egypt",
         headline: "Designing an exceptional experience",
-        subtitle: "Operations & e-commerce · Cultural development · Research & instructional design · Visual production · AI workflows",
-        intro: "Building operating systems, designing tools and content, and documenting projects—from e-commerce to cultural and community initiatives.",
+        subtitle: "Visual production · Cultural & artistic management · Educational research & design · Operations & e-commerce · AI",
+        intro: "Multimedia · Creative documentation — building operating systems and designing tools and creative content, from cultural and community initiatives to e-commerce.",
         projectsCta: "Browse the experience archive",
         contactCta: "Get in touch",
         proof: "More than 11 years of professional experience since 2014",
@@ -499,6 +541,64 @@ var SITE = {
       metaDescription: "Nada Elsebaee is a multidisciplinary leader in operations and e-commerce, instructional design, cultural research, visual production and AI prompt engineering, with more than 11 years of experience."
     }
   },
+  aboutGallery: {
+    ar: [
+      {
+        src: "assets/images/projects/assetsimagesnada-portrait (4).webp",
+        alt: "صورة شخصية مهنية لندى السباعي",
+        caption: "ندى السباعي"
+      },
+      {
+        src: "assets/images/projects/assetsimagesnada-portrait (2).webp",
+        alt: "صورة شخصية لندى السباعي في القاهرة",
+        caption: "ندى السباعي"
+      },
+      {
+        src: "assets/images/optimized/music-video-documentation.webp",
+        alt: "ندى تستخدم كاميرا للتوثيق البصري",
+        caption: "التصوير والتوثيق البصري"
+      },
+      {
+        src: "assets/images/projects/assetsimagesnada-culturaldevelepment-college (3).webp",
+        alt: "ندى مع زملائها في دبلوم التنمية الثقافية والأستاذ الدكتور عماد أبو غازي",
+        caption: "زملاء دبلوم التنمية الثقافية والأستاذ الدكتور عماد أبو غازي في جامعة القاهرة"
+      },
+      {
+        src: "assets/images/projects/care-lecaire (2).webp",
+        alt: "صورة جماعية ضمن مشروع CARE International وLe Caire",
+        caption: "فريق ومشاركات مشروع CARE International وLe Caire",
+        projectId: "care-lecaire"
+      }
+    ],
+    en: [
+      {
+        src: "assets/images/projects/assetsimagesnada-portrait (4).webp",
+        alt: "Professional portrait of Nada Elsebaee",
+        caption: "Nada Elsebaee"
+      },
+      {
+        src: "assets/images/projects/assetsimagesnada-portrait (2).webp",
+        alt: "Portrait of Nada Elsebaee in Cairo",
+        caption: "Nada Elsebaee"
+      },
+      {
+        src: "assets/images/optimized/music-video-documentation.webp",
+        alt: "Nada using a camera for visual documentation",
+        caption: "Photography and visual documentation"
+      },
+      {
+        src: "assets/images/projects/assetsimagesnada-culturaldevelepment-college (3).webp",
+        alt: "Nada with her Cultural Development Diploma colleagues and Professor Dr. Emad Abu Ghazi",
+        caption: "Cultural Development Diploma colleagues and Professor Dr. Emad Abu Ghazi at Cairo University"
+      },
+      {
+        src: "assets/images/projects/care-lecaire (2).webp",
+        alt: "Group photo from the CARE International and Le Caire project",
+        caption: "CARE International and Le Caire project team and participants",
+        projectId: "care-lecaire"
+      }
+    ]
+  },
   services: {
     ar: {
       pageTitle: "الخدمات | مختبر ندى السباعي",
@@ -514,7 +614,7 @@ var SITE = {
         {
           title: "التوثيق والإنتاج الفني",
           description: "تخطيط وتنفيذ التوثيق الفوتوغرافي والمرئي، وإنتاج الأفلام والمواد الفنية، وإدارة التغطية الميدانية ولوجستياتها. يشمل ذلك تطوير تصورات ومواد مرئية مولّدة أو مدعومة بأدوات الذكاء الاصطناعي عند ملاءمتها للمشروع، مع مراجعة فنية وبشرية قبل الاستخدام.",
-          image: "assets/images/projects/wuf12.webp",
+          image: "assets/images/services/visual-documentation.webp",
           summary: "التوثيق الميداني وإنتاج الأفلام والمواد الفنية، بما فيها مخرجات إبداعية مدعومة بالذكاء الاصطناعي.",
           examples: [
             {
@@ -532,10 +632,10 @@ var SITE = {
           ]
         },
         {
-          title: "تنسيق المشاريع الثقافية والتصميم التعليمي",
-          description: "تحويل احتياجات الفئات والسياق إلى برامج قابلة للتنفيذ، وتصميم وتيسير الورش، وإعداد الأدلة وأدوات التعلّم والتقييم. من الأمثلة دليل سوا سوا مع ألوان وأوتار بدعم اليونسكو، ومبادرات أنا المصري ودوار العزبة ومشروع أمتن في دار المبرة.",
-          image: "assets/images/projects/sawa-sawa.webp",
-          summary: "تصميم برامج وورش وأدلة وأدوات تعلّم وتقييم مرتبطة بالسياق.",
+          title: "تصميم وتنسيق المشروعات الثقافية والفنية والتعليمية",
+          description: "تصميم وتنسيق برامج ومشروعات ثقافية وفنية وتعليمية انطلاقًا من احتياجات المشاركين وسياقهم. يشمل العمل إعداد أدوات البحث والتعلّم والتقييم، وتطوير الأدلة والورش وتيسيرها، والتنسيق مع الشركاء.",
+          image: "assets/images/services/cultural-project-design.webp",
+          summary: "تصميم البرامج والمواد التعليمية وأدوات البحث والتقييم، وتنسيق تنفيذها مع الشركاء.",
           examples: [
             {
               label: "دليل سوا سوا لمواجهة التنمر",
@@ -554,7 +654,7 @@ var SITE = {
         {
           title: "سرد العلامات التجارية واستراتيجية المحتوى",
           description: "بناء صوت تحريري متسق، وتأليف سلاسل سردية ثقافية وقصص أصل المنتجات، وصياغة المحتوى التنفيذي. يمكن توظيف أدوات الذكاء الاصطناعي للبحث الأولي وتوليد مسودات أو بدائل، مع التحقق من المعلومات والتحرير البشري قبل النشر.",
-          image: "assets/images/projects/assetsimagesprojectsgaia-global (4).webp",
+          image: "assets/images/services/brand-storytelling.webp",
           summary: "سرد العلامة وقصص المنتجات ومحتوى تحريري، مع استخدام منضبط لأدوات الذكاء الاصطناعي.",
           examples: [
             {
@@ -570,7 +670,7 @@ var SITE = {
         {
           title: "العمليات الإبداعية وتجهيز بيئات العمل",
           description: "تحليل خطوات العمل وتوثيقها، وإعداد أنظمة التشغيل وقواعد البيانات وتدفقات المخزون، وتجهيز الاستوديوهات وتنظيم مسؤوليات الفرق. تُستخدم أدوات الذكاء الاصطناعي والأتمتة لتقليل المهام المتكررة حين تكون مناسبة، مع إبقاء القرارات والمراجعة بيد الفريق.",
-          image: "assets/images/projects/mastery-academy.webp",
+          image: "assets/images/services/creative-operations.webp",
           summary: "أنظمة تشغيل واستوديوهات وتدفقات عمل مدعومة بالأتمتة وأدوات الذكاء الاصطناعي المناسبة.",
           examples: [
             {
@@ -586,7 +686,7 @@ var SITE = {
         {
           title: "إدارة وتطوير الحضور الرقمي",
           description: "تحديد المنصات الملائمة للأهداف والجمهور، وبناء خطة محتوى وتقويم نشر، وإدارة سير الإنتاج والمراجعة وقراءة مؤشرات الأداء. يمكن توظيف أدوات الذكاء الاصطناعي لدعم البحث وتكييف الصيغ، دون استبدال المراجعة التحريرية أو صوت الجهة.",
-          image: "assets/images/projects/assetsimagesprojectsgaia-global (2).webp",
+          image: "assets/images/services/digital-presence.webp",
           summary: "استراتيجية منصات ومحتوى ونشر وقياس أداء، مع دعم أدوات AI عند الحاجة.",
           examples: [
             {
@@ -598,7 +698,7 @@ var SITE = {
         {
           title: "دراسات السوق وتحليل الجمهور",
           description: "تصميم أسئلة البحث وأدوات جمع البيانات، وتنفيذ مراجعة مكتبية أو ميدانية لفهم الجمهور والمنافسين والفرص. تُنظّم النتائج وتُحلل وتُقدّم في صورة استنتاجات وحدود واضحة وخطوات قابلة للتطبيق؛ ويمكن استخدام أدوات AI للمساندة بعد مراعاة الخصوصية والتحقق.",
-          image: "assets/images/projects/assetsimagesnada-culturaldevelepment-study.webp",
+          image: "assets/images/services/market-research.webp",
           summary: "بحث الجمهور والسوق وتحويل الأدلة إلى قرارات عملية، مع توظيف مسؤول لأدوات التحليل.",
           examples: [
             {
@@ -610,7 +710,7 @@ var SITE = {
         {
           title: "تطوير الاستراتيجيات والخطط",
           description: "صياغة استراتيجيات وخطط مؤسسية ورقمية وفنية إبداعية انطلاقًا من تحليل الوضع والأهداف والموارد، ثم تحويلها إلى مراحل ومسؤوليات ومؤشرات متابعة قابلة للقياس. تُستخدم الأدوات الرقمية والذكاء الاصطناعي للمساندة في التنظيم والاستكشاف، مع مراجعة المخرجات وربطها بالأدلة.",
-          image: "assets/images/projects/assetsimagesprojectsgaia-global.webp",
+          image: "assets/images/services/strategy-planning.webp",
           summary: "استراتيجيات قابلة للتنفيذ بمراحل ومسؤوليات ومؤشرات واضحة وأدوات رقمية مساندة.",
           examples: [
             {
@@ -640,7 +740,7 @@ var SITE = {
         {
           title: "Visual Documentation & Creative Production",
           description: "Planning and delivering photographic and video documentation, films, creative assets and field-production logistics. This can include visual concepts and assets generated or supported by AI tools when suitable to the project, with human and creative review before use.",
-          image: "assets/images/projects/wuf12.webp",
+          image: "assets/images/services/visual-documentation.webp",
           summary: "Field documentation, film and creative production, including carefully reviewed AI-assisted outputs.",
           examples: [
             {
@@ -658,10 +758,10 @@ var SITE = {
           ]
         },
         {
-          title: "Cultural Project Coordination & Instructional Design",
-          description: "Turning audience needs and context into workable programs, facilitated workshops, learning resources and evaluation tools. Examples include the Sawa Sawa guide with Alwan wa Awtar and UNESCO support, Ana Masry, Dawar Ezbet and Amton at Dar Al-Mabara.",
-          image: "assets/images/projects/sawa-sawa.webp",
-          summary: "Context-led community programs, workshops, guides and learning tools.",
+          title: "Cultural, Arts & Education Project Design and Coordination",
+          description: "Designing and coordinating cultural, arts and education projects around participant needs and context. Work includes research, learning and evaluation tools, practical guides, workshop design and facilitation, and coordination with project partners.",
+          image: "assets/images/services/cultural-project-design.webp",
+          summary: "Designing programs, learning resources and research and evaluation tools, and coordinating their delivery with partners.",
           examples: [
             {
               label: "Sawa Sawa anti-bullying guide",
@@ -680,7 +780,7 @@ var SITE = {
         {
           title: "Brand Storytelling & Content Strategy",
           description: "Building an editorial voice through cultural storytelling, product-origin narratives and executive copy. AI tools can support initial research, ideation and draft variations, followed by fact-checking and human editing before publication.",
-          image: "assets/images/projects/assetsimagesprojectsgaia-global (4).webp",
+          image: "assets/images/services/brand-storytelling.webp",
           summary: "Brand storytelling and editorial content with considered, human-reviewed AI support.",
           examples: [
             {
@@ -696,7 +796,7 @@ var SITE = {
         {
           title: "Creative Operations & Workplace Setup",
           description: "Mapping workflows, documenting procedures, structuring databases and inventory flows, and setting up studios and team responsibilities. Automation and AI tools can reduce repetitive work where appropriate while leaving decisions and review with the team.",
-          image: "assets/images/projects/mastery-academy.webp",
+          image: "assets/images/services/creative-operations.webp",
           summary: "Operational systems, studio setup and workflows supported by suitable automation and AI tools.",
           examples: [
             {
@@ -712,7 +812,7 @@ var SITE = {
         {
           title: "Digital Presence Management & Growth",
           description: "Selecting platforms for audience and goals, developing content plans and publishing calendars, coordinating production and reviewing performance. AI tools may support research and format adaptation without replacing editorial review or the organization's voice.",
-          image: "assets/images/projects/assetsimagesprojectsgaia-global (2).webp",
+          image: "assets/images/services/digital-presence.webp",
           summary: "Platform, content and publishing strategy with performance review and optional AI support.",
           examples: [
             {
@@ -724,7 +824,7 @@ var SITE = {
         {
           title: "Market Research & Audience Analysis",
           description: "Designing research questions and collection tools, then conducting desk or field research into audience needs, competitors and opportunities. Findings are organized with clear evidence and limitations; AI tools may assist analysis subject to privacy and verification.",
-          image: "assets/images/projects/assetsimagesnada-culturaldevelepment-study.webp",
+          image: "assets/images/services/market-research.webp",
           summary: "Audience and market research translated into evidence-based decisions, with responsible analytical tools.",
           examples: [
             {
@@ -736,7 +836,7 @@ var SITE = {
         {
           title: "Institutional, Digital & Creative Strategy",
           description: "Developing institutional, digital and creative strategies from a review of context, objectives and resources, then translating them into phases, responsibilities and measurable indicators. Digital and AI tools can support organization and exploration, with outputs reviewed against evidence.",
-          image: "assets/images/projects/assetsimagesprojectsgaia-global.webp",
+          image: "assets/images/services/strategy-planning.webp",
           summary: "Actionable strategies with clear phases, ownership and measures, supported by appropriate digital tools.",
           examples: [
             {
@@ -757,6 +857,11 @@ var SITE = {
       id: "operations",
       ar: "العمليات والتجارة الإلكترونية",
       en: "Operations & e-commerce"
+    },
+    {
+      id: "writing",
+      ar: "الكتابة والمحتوى",
+      en: "Writing & content"
     },
     {
       id: "research",
@@ -888,65 +993,51 @@ var SITE = {
     },
     {
       videoId: "4g0vl2CBbi0",
-      projectId: "independent-films",
-      arTitle: "عمل بصري مختار",
-      enTitle: "Selected visual work"
+      projectId: "lawha",
+      arTitle: "لوحة — الفيلم الأصلي",
+      enTitle: "Lawha — Original film"
     },
     {
       videoId: "Wy_BOSZIYtE",
-      projectId: "music-video-documentation",
-      arTitle: "تصوير المكياج · فيديو كليب جامعة الجلالة 2025",
-      enTitle: "Makeup documentation · Galala University music video 2025"
+      projectId: "sky-events",
+      arTitle: "كواليس تصوير فيديو كليب جامعة الجلالة",
+      enTitle: "Galala University music video — behind-the-scenes documentation"
     }
   ],
+  studioVisualProjects: ["lawha", "gelsa-orfeya", "bara-geiby", "hakim-archive"],
   projects: [
     {
       id: "gaia-global",
       category: "operations",
       image: "assets/images/projects/assetsimagesprojectsgaia-global.webp",
-      gallery: [
-        {
-          src: "assets/images/projects/assetsimagesprojectsgaia-global (2).webp",
-          alt: {
-            ar: "مواد مرئية من مشروع GAIA Global",
-            en: "Visual material from GAIA Global"
-          },
-          caption: {
-            ar: "مواد مرئية مختارة من GAIA Global",
-            en: "Selected visual material from GAIA Global"
-          }
-        },
-        {
-          src: "assets/images/projects/assetsimagesprojectsgaia-global (4).webp",
-          alt: {
-            ar: "مواد مرئية من مشروع GAIA Global",
-            en: "Visual material from GAIA Global"
-          },
-          caption: {
-            ar: "مواد مرئية مختارة من GAIA Global",
-            en: "Selected visual material from GAIA Global"
-          }
-        }
-      ],
+      gallery: projectGallery(
+        [
+          "assetsimagesprojectsgaia-global (2).webp",
+          "assetsimagesprojectsgaia-global (3).webp",
+          "assetsimagesprojectsgaia-global (4).webp"
+        ],
+        "صورة من تشكيلات مجوهرات GAIA Global",
+        "Image from GAIA Global jewellery collections",
+        "مواد مرئية من تشكيلات GAIA Global",
+        "Visual material from GAIA Global collections"
+      ),
       years: "يونيو 2025 – يونيو 2026",
       organization: "GAIA Global",
       role: "المدير العام ومدير عمليات التجارة الإلكترونية",
       title: "GAIA Global — إدارة العمليات والتجارة الإلكترونية",
       summary: "قيادة العمليات والتجارة الإلكترونية لعلامة فاخرة تعمل عبر Shopify.",
       scope: [
-        "إدارة العمليات التخطيطية واليومية وتنسيق اللوجستيات وسلاسل الإمداد.",
-        "إعادة تنظيم مسارات العمل بين الفرق وقنوات التواصل وبرنامج Shopify Collabs.",
+        "إدارة منصة Shopify ومتابعة المخزون وسلاسل الإمداد واللوجستيات وتجربة العملاء ومؤشرات الأداء.",
+        "تطوير إجراءات التشغيل القياسية (SOPs) وتنسيق العمل بين الفرق وقنوات التواصل وبرنامج Shopify Collabs.",
         "صياغة سلسلة Decoding Beauty التي تمزج التاريخ الطبيعي والميثولوجيا والحقائق العلمية.",
         "استخدام هندسة أوامر الذكاء الاصطناعي لدعم أصول العلامة التجارية وتنظيم CRM."
       ],
-      outcomes: ["سلسلة Decoding Beauty ومقاطع GAIA المنشورة."],
+      outcomes: [
+        "سلسلة Decoding Beauty ومقاطع GAIA المنشورة.",
+        "تطوير تصميم التغليف بما خفّض هدر المواد بأكثر من 70% والمرتجعات بأكثر من 10%، وفق الملف المهني."
+      ],
       links: [
-        ["GAIA AI Short — 1", "https://youtube.com/shorts/Lp1wsZy8-Pc"],
-        ["GAIA AI Short — 2", "https://youtube.com/shorts/eIhR4Q_UcKw"],
-        ["GAIA AI Short — 3", "https://youtube.com/shorts/mVXZs8flABs"],
-        ["GAIA AI Short — 4", "https://youtube.com/shorts/5Du63JOZ3kM"],
-        ["GAIA AI Short — 5", "https://youtube.com/shorts/_i_kjJcf2u0"],
-        ["GAIA AI Short — 6", "https://youtube.com/shorts/IBz32OPt9rE"]
+        [{ ar: "الموقع الرسمي لـ GAIA Global", en: "GAIA Global official website" }, "https://gaia-global.shop/"]
       ],
       en: {
         years: "June 2025 – June 2026",
@@ -955,12 +1046,15 @@ var SITE = {
         summary: "Led operations and e-commerce for a luxury brand working on Shopify.",
         role: "General Manager & E-commerce Operations Manager",
         scope: [
-          "Managed planning and day-to-day operations, logistics and supply-chain coordination.",
-          "Restructured workflows across teams, communication channels and Shopify Collabs.",
+          "Managed Shopify operations across inventory, supply chain, logistics, customer experience and performance indicators.",
+          "Developed standard operating procedures (SOPs) and coordinated work across teams, communication channels and Shopify Collabs.",
           "Created the Decoding Beauty series, combining natural history, mythology and scientific facts.",
           "Used AI prompt engineering to support brand assets and CRM organization."
         ],
-        outcomes: ["The Decoding Beauty series and published GAIA videos."]
+        outcomes: [
+          "The Decoding Beauty series and published GAIA videos.",
+          "Packaging design changes reduced material waste by more than 70% and returns by more than 10%, as stated in the professional profile."
+        ]
       }
     },
     {
@@ -1002,6 +1096,19 @@ var SITE = {
       id: "nassajat-alnil",
       category: "visual",
       image: "assets/images/projects/nassajat-alnil.webp",
+      gallery: projectGallery(
+        [
+          "assetsimagesprojectsnassajat-alnil (1).webp",
+          "assetsimagesprojectsnassajat-alnil (2).webp",
+          "assetsimagesprojectsnassajat-alnil (3).webp",
+          "assetsimagesprojectsnassajat-alnil (4).webp",
+          "assetsimagesprojectsnassajat-alnil (5).webp"
+        ],
+        "صورة من أنشطة وحرف مشروع ناسجات النيل",
+        "Image from Weavers of the Nile craft and project activities",
+        "مواد مرئية مختارة من توثيق مشروع ناسجات النيل",
+        "Selected visual documentation from Weavers of the Nile"
+      ),
       years: "سبتمبر 2024",
       organization: "مبادرة مكاننا · علياء جاليري · مبادرة سيدات النوبة للحرف اليدوية · بتمويل الاتحاد الأوروبي وبالتعاون مع EUNIC مصر",
       role: "قائدة التوثيق البصري ومديرة تصوير (DOP)",
@@ -1013,10 +1120,7 @@ var SITE = {
         "إخراج وإنتاج فيلم وثائقي عُرض في المركز الثقافي الإيطالي بالزمالك."
       ],
       outcomes: ["فيلم وثائقي ومواد مرئية للمشروع."],
-      links: [
-        ["ناسجات النيل — الجزء الأول", "https://youtu.be/19Dd1IYT_qo"],
-        ["ناسجات النيل — الجزء الثاني", "https://youtu.be/O8RzVT-DG1k"]
-      ],
+      links: [],
       en: {
         years: "September 2024",
         organization: "Makanuna Initiative · Aliaa Gallery · Nubian Women Initiative for Handcrafts · EU-funded with EUNIC Egypt",
@@ -1103,36 +1207,20 @@ var SITE = {
       }
     },
     {
-      id: "makanuna-visual",
-      category: "community",
-      image: "assets/images/projects/makanuna-visual.webp",
-      years: "يوليو 2024 – 2025",
-      organization: "مؤسسة مكاننا وشركاء المشاريع",
-      role: "منسقة فنون بصرية ومصورة",
-      title: "مكاننا — فنون بصرية ومشاريع مجتمعية",
-      summary: "تنسيق وتوثيق مشاريع بصرية ومجتمعية متعددة الوسائط.",
-      scope: [
-        "تنسيق مشاريع فنية متعددة الوسائط تشمل الفيديو والتصوير الفوتوغرافي والجرافيتي.",
-        "إعداد أرشيفات رقمية وتوثيق ميداني لمبادرات مجتمعية."
-      ],
-      outcomes: ["مواد مرئية وأرشيفات لمشاريع مكاننا."],
-      links: [],
-      en: {
-        years: "July 2024 – 2025",
-        organization: "Makanuna Foundation and project partners",
-        title: "Makanuna — Visual arts & community projects",
-        summary: "Coordination and documentation of multidisciplinary visual and community projects.",
-        role: "Visual Arts Coordinator & Photographer",
-        scope: [
-          "Coordinated multidisciplinary visual-arts projects across video, photography and graffiti.",
-          "Prepared digital archives and field documentation for community initiatives."
-        ],
-        outcomes: ["Visual materials and archives for Makanuna projects."]
-      }
-    },
-    {
       id: "alasmarat",
       category: "community",
+      image: "assets/images/projects/assetsimagesprojectsalasmarat.webp",
+      imageAlt: {
+        ar: "صورة من مشروع حكاية حيينا: الأسمرات",
+        en: "Image from The Story of Our Neighborhood: Al-Asmarat"
+      },
+      gallery: projectGallery(
+        ["assetsimagesprojectsalasmarat.webp", "assetsimagesprojectsalasmarat (2).webp"],
+        "صورة توثيقية من مشروع الأسمرات",
+        "Documentary image from the Al-Asmarat project",
+        "مواد مرئية للمشروع محفوظة بتصميمها الأصلي",
+        "Project visuals preserved in their original design"
+      ),
       years: "2024",
       organization: "مبادرة مين بيربي مين · علياء جاليري · ورشة ستار ميتال · نظمت الورشة Habitat for Humanity بالشراكة مع مكاننا ومؤسسة بناء، وبالتعاون مع AASMT وتحت رعاية صندوق التنمية الحضرية",
       role: "مصممة مشاركة ومنفذة للفيلم الوثائقي",
@@ -1143,9 +1231,7 @@ var SITE = {
         "توثيق أنشطة شارك فيها أطفال من المنطقة لتصميم ورسم جداريات وجرافيتي."
       ],
       outcomes: ["فيلم وثائقي منشور عن المشروع."],
-      links: [
-        ["مشاهدة الفيلم", "https://youtu.be/L-MSt3wE81A"]
-      ],
+      links: [],
       en: {
         years: "2024",
         organization: "Meen Byraby Meen Initiative · Aliaa Gallery · Star Metal Workshop · Organized by Habitat for Humanity with Makanuna and BENAA Foundation; in collaboration with AASMT under the patronage of UDF",
@@ -1162,7 +1248,13 @@ var SITE = {
     {
       id: "darb-al-ahmar-tour",
       category: "community",
-      years: "",
+      image: "assets/images/projects/makanuna-visual.webp",
+      imageAlt: {
+        ar: "صورة من مشروع عدسة مكاننا",
+        en: "Image from the Makanuna Lens project"
+      },
+      gallery: makanunaLensGallery,
+      years: "2025",
       organization: "مكاننا · صورة وحكاية",
       role: "مشاركة في التوثيق والتصوير",
       title: "عدسة مكاننا — جولة الدرب الأحمر",
@@ -1172,9 +1264,7 @@ var SITE = {
         "قاد الجولة المصور مصطفى الشوربجي والمصورة الناشئة جنى أيمن."
       ],
       outcomes: ["فيديو يوثق الجولة."],
-      links: [
-        ["مشاهدة فيديو الجولة", "https://youtu.be/1vPOFFTtjMY"]
-      ],
+      links: [],
       en: {
         organization: "Makanuna · Soura & Hekaya",
         title: "Makanuna Lens — Darb al-Ahmar photography tour",
@@ -1193,66 +1283,44 @@ var SITE = {
       image: "assets/images/projects/mastery-academy.webp",
       years: "تأسيس المقر: 2018–2019 · الوظيفة: يناير 2021 – يونيو 2022",
       organization: "Mastery Academy",
-      role: "مديرة الإنتاج الإبداعي ومستشارة في تأسيس المقر والاستوديو",
-      title: "Mastery Academy — تأسيس الاستوديو والإنتاج التعليمي",
-      summary: "مساران للعمل مع الأكاديمية: مساهمة استشارية في تأسيس المقر والاستوديو، ثم قيادة الإنتاج الإبداعي.",
+      role: "مديرة الإنتاج الإبداعي وإدارة العمليات",
+      title: "Mastery Academy — الإنتاج التعليمي وإدارة العمليات",
+      summary: "إدارة إنتاج المحتوى التعليمي والتدريبي وعملياته، إلى جانب مساهمة تأسيسية منفصلة لتجهيز المقر والاستوديو في مصر.",
       scope: [
-        "المساهمة في تجهيز المقر والاستوديو الإنتاجي وبناء الأنظمة التشغيلية.",
-        "الإشراف على إنتاج وتطوير المناهج التعليمية ومراجعة المحتوى التدريبي.",
-        "توظيف وإدارة فريق الإنتاج والتنسيق مع المدربين والخبراء."
+        "خلال الوظيفة (يناير 2021 – يونيو 2022): إدارة الإنتاج الإبداعي والعمليات المرتبطة بإنتاج المحتوى التعليمي والتدريبي.",
+        "إدارة فريق الإنتاج الإبداعي والفرق الفنية، والتنسيق مع الفرق والمدربين والخبراء في القاهرة والسعودية ومواقع أخرى بحسب احتياج العمل.",
+        "الإشراف على إنتاج وتصوير ومونتاج أكثر من 30 دورة تدريبية وتعليمية.",
+        "تنسيق جداول المدربين والخبراء، ومتابعة العقود والميزانيات والتسليمات.",
+        "مراجعة الحقائب والمحتوى التدريبي قبل التسجيل وبعده، وتنظيم إجراءات العمل والأرشفة الرقمية.",
+        "مرحلة تأسيس منفصلة (2018 – 2019): المساهمة في تجهيز المقر الإقليمي والاستوديو الإنتاجي الأول في مصر، بما شمل البنية التقنية ومعدات التصوير والإضاءة والصوت وإجراءات التشغيل الأساسية."
       ],
-      outcomes: ["استوديو إنتاج تعليمي ومناهج ومواد تدريبية."],
+      outcomes: ["الإشراف على إنتاج أكثر من 30 دورة تدريبية وتعليمية."],
       links: [],
       en: {
         years: "Setup: 2018–2019 · Role: Jan 2021 – Jun 2022",
         organization: "Mastery Academy",
-        title: "Mastery Academy — Studio setup & learning production",
-        summary: "Two periods of work: consulting on the headquarters and studio setup, followed by leading creative production.",
-        role: "Creative Production Director & Setup Consultant",
+        title: "Mastery Academy — Learning Production & Operations",
+        summary: "Managed educational and training-content production and operations, alongside a separate earlier contribution to the Egypt headquarters and studio setup.",
+        role: "Creative Production & Operations Manager",
         scope: [
-          "Contributed to setting up the headquarters, production studio and operating systems.",
-          "Oversaw the production and development of learning curricula and reviewed training content.",
-          "Hired and managed the production team and coordinated with trainers and subject experts."
+          "During the role (January 2021–June 2022), managed creative production and operations for educational and training content.",
+          "Led the creative production team and technical teams, coordinating with teams, trainers and experts in Cairo, Saudi Arabia and other locations as needed.",
+          "Oversaw production, filming and editing for more than 30 educational and training courses.",
+          "Coordinated trainer and expert schedules and followed up on contracts, budgets and deliverables.",
+          "Reviewed training packages and content before and after recording, and organized workflows and the digital archive.",
+          "Separate setup phase (2018–2019): contributed to establishing the regional headquarters and Egypt's first production studio, including technical infrastructure, camera, lighting and audio equipment, and basic operating procedures."
         ],
-        outcomes: ["An instructional production studio, curricula and learning materials."]
-      }
-    },
-    {
-      id: "on-time-pioneers",
-      category: "education",
-      image: "assets/images/projects/on-time-pioneers.webp",
-    imageType: "generated",
-      years: "2019 – 2020",
-      organization: "On Time Group · Pioneers Academy",
-      role: "مديرة استوديو ومتخصصة إنتاج فيديو",
-      title: "On Time Group وPioneers Academy — استوديو تعليمي",
-      summary: "إدارة استوديو إنتاج وتوثيق محتوى دورات تعليمية.",
-      scope: [
-        "إدارة تجهيزات التصوير والإضاءة والصوت في الاستوديو.",
-        "تصوير ومونتاج وتوثيق أكثر من 30 دورة تدريبية.",
-        "تنظيم الأرشيف الرقمي ومراجعة المخرجات قبل النشر."
-      ],
-      outcomes: ["مواد رقمية لأكثر من 30 دورة وأرشيف للدورات."],
-      links: [],
-      en: {
-        years: "2019 – 2020",
-        organization: "On Time Group · Pioneers Academy",
-        title: "On Time Group & Pioneers Academy — Learning studio",
-        summary: "Managed a production studio and documented educational course content.",
-        role: "Studio Manager & Video Production Specialist",
-        scope: [
-          "Managed studio camera, lighting and sound setup.",
-          "Shot, edited and documented more than 30 training courses.",
-          "Organized the digital course archive and reviewed outputs before publication."
-        ],
-        outcomes: ["Digital materials for more than 30 courses and a course archive."]
+        outcomes: ["Oversaw production of more than 30 educational and training courses."]
       }
     },
     {
       id: "hakim-archive",
       category: "visual",
-      image: "assets/images/projects/hakim-archive.webp",
-    imageType: "generated",
+      image: "assets/images/optimized/music-video-documentation.webp",
+      imageAlt: {
+        ar: "ندى خلف الكاميرا أثناء التوثيق البصري",
+        en: "Nada behind the camera during visual documentation"
+      },
       years: "2018 – 2019",
       organization: "المكتب الخاص للفنان حكيم",
       role: "مسؤولة أرشيف رقمي ومصورة ومونتيرة",
@@ -1280,6 +1348,14 @@ var SITE = {
     {
       id: "care-lecaire",
       category: "community",
+      image: "assets/images/projects/care-lecaire.webp",
+      gallery: projectGallery(
+        ["care-lecaire (2).webp"],
+        "صورة جماعية ضمن مشروع CARE International وLe Caire",
+        "Group photo from the CARE International and Le Caire project",
+        "فريق ومشاركات ضمن سياق مشروع CARE International وLe Caire",
+        "Team and participants in the context of the CARE International and Le Caire project"
+      ),
       years: "2019",
       organization: "CARE International · Le Caire",
       role: "ميسرة ومستشارة تدريب",
@@ -1307,8 +1383,7 @@ var SITE = {
     {
       id: "sky-events",
       category: "visual",
-      image: "assets/images/projects/sky-events.webp",
-    imageType: "generated",
+      image: "assets/images/optimized/music-video-documentation.webp",
       years: "2015 – 2023 · دوام جزئي",
       organization: "Sky Event Management",
       role: "منسقة ومصورة فعاليات",
@@ -1331,54 +1406,87 @@ var SITE = {
       }
     },
     {
-      id: "yomeddine",
+      id: "selected-styling-work",
       category: "visual",
-      years: "2015",
-      organization: "فيلم يوم الدين",
+      image: "assets/images/projects/yomeddine.webp",
+      imageAlt: {
+        ar: "بوستر فيلم يوم الدين، ضمن أعمال تنسيق الملابس",
+        en: "Yomeddine film poster, featured in styling work"
+      },
+      years: "2014 – 2015",
+      organization: "أعمال مختارة في تنسيق الأزياء",
       role: "ستايلست",
-      title: "يوم الدين — تنسيق الإطلالات",
-      summary: "عملت كستايلست في الفيلم الروائي «يوم الدين».",
-      scope: ["العمل كستايلست ضمن فريق الفيلم."],
-      outcomes: ["شارك الفيلم في المسابقة الرسمية لمهرجان كان 2018، وكان الترشيح المصري الرسمي لسباق الأوسكار."],
+      title: "أدوار تنسيق الملابس",
+      summary: "ثلاثة أعمال مستقلة في تنسيق الملابس، لكل منها سياقه ومواده الخاصة.",
+      scope: [
+        "Yomeddine — Stylist، 2015.",
+        "TEN Channel — Stylist، 2014–2015.",
+        "Batata Film — Stylist."
+      ],
+      outcomes: [],
       links: [],
+      selectedWorks: [
+        {
+          title: { ar: "يوم الدين — Yomeddine", en: "Yomeddine" },
+          role: { ar: "ستايلست", en: "Stylist" },
+          years: "2015",
+          image: "assets/images/projects/yomeddine.webp",
+          alt: { ar: "بوستر فيلم يوم الدين", en: "Yomeddine film poster" }
+        },
+        {
+          title: { ar: "قناة TEN", en: "TEN Channel" },
+          role: { ar: "ستايلست", en: "Stylist" },
+          years: "2014 – 2015"
+        },
+        {
+          title: { ar: "فيلم Batata", en: "Batata Film" },
+          role: { ar: "ستايلست", en: "Stylist" }
+        }
+      ],
       en: {
-        years: "2015",
-        organization: "Yomeddine",
-        title: "Yomeddine — Styling",
-        summary: "Worked as a stylist on the feature film Yomeddine.",
+        years: "2014 – 2015",
+        organization: "Selected styling work",
+        title: "Styling Roles",
+        summary: "Three distinct styling projects, each presented in its own context.",
         role: "Stylist",
-        scope: ["Worked as a stylist on the film."],
-        outcomes: ["The film competed in the 2018 Cannes Official Selection and was Egypt's official submission to the Oscars."]
+        scope: [
+          "Yomeddine — Stylist, 2015.",
+          "TEN Channel — Stylist, 2014–2015.",
+          "Batata Film — Stylist."
+        ],
+        outcomes: []
       }
     },
     {
       id: "lawha",
       category: "visual",
       image: "assets/images/optimized/lawha.webp",
-      gallery: [
-        {
-          src: "assets/images/projects/lawha (6).webp",
-          alt: {
-            ar: "لقطة مختارة من الفيلم القصير لوحة",
-            en: "Selected still from the short film Lawha"
-          },
-          caption: {
-            ar: "لقطة مختارة من فيلم «لوحة»",
-            en: "Selected still from Lawha"
-          }
-        },
-        {
-          src: "assets/images/projects/lawha (10).webp",
-          alt: {
-            ar: "لقطة مختارة من الفيلم القصير لوحة",
-            en: "Selected still from the short film Lawha"
-          },
-          caption: {
-            ar: "لقطة مختارة من فيلم «لوحة»",
-            en: "Selected still from Lawha"
-          }
-        }
-      ],
+      gallery: projectGallery(
+        [
+          "lawha.webp",
+          "lawha (1).webp",
+          "lawha (2).webp",
+          "lawha (3).webp",
+          "lawha (4).webp",
+          "lawha (5).webp",
+          "lawha (6).webp",
+          "lawha (7).webp",
+          "lawha (8).webp",
+          "lawha (9).webp",
+          "lawha (10).webp",
+          "lawha (11).webp",
+          "lawha (12).webp",
+          "lawha (13).webp",
+          "lawha (14).webp",
+          "lawha (15).webp",
+          "lawha (16).webp",
+          "lawha (17).webp"
+        ],
+        "صورة ثابتة أو مادة تصويرية من فيلم لوحة",
+        "Film still or production image from Lawha",
+        "مواد الفيلم المتاحة، مرتبة ضمن معرض مستقل لفيلم لوحة",
+        "Available film materials, shown in a dedicated Lawha gallery"
+      ),
       years: "2019",
       organization: "فيلم مستقل · مهرجان رؤى للفيلم المصري القصير",
       role: "كاتبة ومخرجة ومنتجة",
@@ -1413,10 +1521,7 @@ var SITE = {
         "كتابة وتصوير ومونتاج شوريلات تمثيلية."
       ],
       outcomes: ["أعمال مختارة ومشاريع متعددة في السينما والمسرح."],
-      links: [
-        ["عمل مصوّر", "https://youtu.be/4g0vl2CBbi0"],
-        ["تصوير المكياج لفيديو كليب", "https://youtu.be/Wy_BOSZIYtE"]
-      ],
+      links: [],
       en: {
         years: "Since 2017",
         organization: "Independent film and theatre projects",
@@ -1482,6 +1587,13 @@ var SITE = {
       id: "bara-geiby",
       category: "visual",
       image: "assets/images/projects/bara-geiby.webp",
+      gallery: projectGallery(
+        ["bara-geiby (2).webp"],
+        "صورة توثيقية من كواليس مسرحية بره جيبي",
+        "Behind-the-scenes image from Bara Geiby",
+        "توثيق مسرحي من «بره جيبي»",
+        "Theatre documentation from Bara Geiby"
+      ),
       years: "2018",
       organization: "مسرح مستقل",
       role: "مصورة ومونتيرة توثيقية",
@@ -1501,54 +1613,80 @@ var SITE = {
       }
     },
     {
-      id: "screenplays",
-      category: "visual",
+      id: "writing",
+      category: "writing",
+      archivePriority: true,
       image: "assets/images/projects/screenplays.webp",
       years: "",
-      organization: "مشاريع كتابة سينمائية",
-      role: "كاتبة سيناريو",
-      title: "سيناريوهات روائية طويلة",
-      summary: "مشروعات كتابة سينمائية مسجلة الملكية الفكرية.",
-      scope: ["تسجيل ملكية فكرية لسيناريوهين روائيين طويلين: «بنت لكن» و«رحمة»."],
+      role: "كاتبة سيناريو ومحتوى وباحثة في مشروعات ثقافية",
+      title: "خبرات في الكتابة — سيناريو ومحتوى وبحث",
+      summary: "خبرة كتابية متنوعة تشمل السيناريوهات الروائية والقصيرة، ومقالات المحتوى الثقافي، والمواد التعليمية والبحثية.",
+      scope: [
+        "كتابة سيناريوهين روائيين طويلين، «بنت لكن» و«رحمة»، وتسجيل ملكيتهما الفكرية.",
+        "كتابة وإخراج الفيلم الروائي القصير «لوحة» (2019)، الذي اختير رسميًا وعُرض في مهرجان رؤى للفيلم المصري القصير بالقاهرة.",
+        "كتابة مقالات وتطوير محتوى سلسلة Decoding Beauty لصالح GAIA Global، عن التاريخ والميثولوجيا والخامات والأحجار الطبيعية، مع الاستعانة بأدوات الذكاء الاصطناعي.",
+        "تأليف محتوى تعليمي لدليل «سوا سوا: قراءة لواقع التنمر في السياقات التربوية».",
+        "إعداد أدوات بحث كيفي ومقابلات وتقييم ضمن مشروع تخرج دبلوم التنمية الثقافية بجامعة القاهرة، لتصميم برنامج أمتن (2025).",
+        "كتابة مشاهد وسيناريوهات قصيرة لشخصيات درامية متنوعة لاستخدامها في ملفات العرض التمثيلي."
+      ],
       outcomes: [],
       links: [],
-      en: {
-        organization: "Screenwriting projects",
-        title: "Feature screenplay projects",
-        summary: "Screenwriting projects with registered intellectual property.",
-        role: "Screenwriter",
-        scope: ["Registered intellectual property for two feature-length screenplays: Bent Laken and Rahma."],
-        outcomes: []
-      }
-    },
-    {
-      id: "music-video-documentation",
-      category: "visual",
-      image: "assets/images/optimized/music-video-documentation.webp",
-      years: "",
-      organization: "فيديو كليب موسيقي",
-      role: "مصورة توثيق المكياج",
-      title: "توثيق المكياج لفيديو كليب",
-      summary: "تصوير توثيقي للمكياج ضمن إنتاج فيديو كليب.",
-      scope: ["تصوير المكياج المستخدم في الفيديو كليب."],
-      outcomes: [],
-      links: [
-        ["مشاهدة الفيديو", "https://youtu.be/Wy_BOSZIYtE"]
+      selectedWorksHeading: {
+        ar: "نماذج من الأعمال الكتابية",
+        en: "Selected writing"
+      },
+      selectedWorks: [
+        {
+          title: { ar: "بنت لكن · رحمة", en: "Bent Laken · Rahma" },
+          role: { ar: "سيناريوهان روائيان طويلان مسجّلا الملكية الفكرية", en: "Two feature-length screenplays with registered intellectual property" }
+        },
+        {
+          title: { ar: "لوحة — Lawha", en: "Lawha" },
+          role: { ar: "سيناريو وإخراج فيلم روائي قصير · اختيار رسمي لمهرجان رؤى", en: "Short-film screenplay and direction · Official selection at Ru'ya Festival" },
+          years: "2019"
+        },
+        {
+          title: { ar: "Decoding Beauty — GAIA Global", en: "Decoding Beauty — GAIA Global" },
+          role: { ar: "مقالات ومحتوى عن التاريخ والميثولوجيا والخامات والأحجار الطبيعية", en: "Articles and content on history, mythology, materials and natural stones" }
+        },
+        {
+          title: { ar: "دليل سوا سوا", en: "Sawa Sawa guide" },
+          role: { ar: "تأليف محتوى تعليمي", en: "Educational content writing" },
+          years: "2025"
+        },
+        {
+          title: { ar: "مشروع أمتن — جامعة القاهرة", en: "Amten — Cairo University" },
+          role: { ar: "بحث كيفي وأدوات مقابلات وتقييم ضمن مشروع تخرج دبلوم التنمية الثقافية", en: "Qualitative research, interview and evaluation tools for a Cultural Development diploma capstone" },
+          years: "2025"
+        },
+        {
+          title: { ar: "مشروع شوريلات الممثلين", en: "Actor Showreels Project" },
+          role: { ar: "كتابة مشاهد وسيناريوهات قصيرة لشخصيات درامية متنوعة", en: "Writing short dramatic scenes and scripts for varied characters" }
+        }
       ],
       en: {
-        organization: "Music video production",
-        title: "Music video — Makeup documentation",
-        summary: "Photographic documentation of makeup for a music video production.",
-        role: "Makeup Documentation Photographer",
-        scope: ["Photographed the makeup used in the music video."],
+        role: "Screenwriter, content writer and cultural-research contributor",
+        title: "Writing Experience — Screenplays, Content & Research",
+        summary: "Writing across feature and short-form screenplays, cultural editorial content, educational materials and research.",
+        scope: [
+          "Wrote two feature-length screenplays, Bent Laken and Rahma, with registered intellectual property.",
+          "Wrote and directed the 2019 short fiction film Lawha, officially selected and screened at the Ru'ya Egyptian Short Film Festival in Cairo.",
+          "Wrote articles and developed Decoding Beauty content for GAIA Global on history, mythology, materials and natural stones, with AI-assisted support.",
+          "Wrote educational content for the Sawa Sawa guide on addressing bullying in educational contexts.",
+          "Prepared qualitative research, interview and evaluation tools for the Amten capstone project in Cairo University's Cultural Development diploma (2025).",
+          "Wrote short dramatic scenes and scripts for varied characters for actor showreels."
+        ],
         outcomes: []
       }
     },
     {
       id: "sinai-community",
       category: "community",
-      image: "assets/images/projects/sinai-community.webp",
-    imageType: "generated",
+      image: "assets/images/optimized/music-video-documentation.webp",
+      imageAlt: {
+        ar: "ندى خلف الكاميرا أثناء التوثيق البصري",
+        en: "Nada behind the camera during visual documentation"
+      },
       years: "يناير – مايو 2020",
       organization: "فريق فني مستقل · جنوب سيناء",
       role: "فنانة جرافيتي ومشاركة بيئية",
@@ -1567,29 +1705,6 @@ var SITE = {
           "Helped paint camp buildings and public streets.",
           "Joined beach-cleaning campaigns with an independent arts team."
         ],
-        outcomes: []
-      }
-    },
-    {
-      id: "palestinian-training",
-      category: "visual",
-      image: "assets/images/projects/palestinian-training.webp",
-    imageType: "generated",
-      years: "2022",
-      organization: "تدريبات وفعاليات مجتمعية",
-      role: "مصورة توثيق بصري",
-      title: "توثيق تدريبات الفلوجة الفلسطينية",
-      summary: "توثيق بصري لفعاليات وتدريبات مجتمعية.",
-      scope: ["التصوير والتوثيق البصري للتدريبات والفعاليات."],
-      outcomes: [],
-      links: [],
-      en: {
-        years: "2022",
-        organization: "Community training events",
-        title: "Visual documentation of Palestinian training",
-        summary: "Visual documentation of community events and training sessions.",
-        role: "Visual Documentation Photographer",
-        scope: ["Photographed and documented the training sessions and events."],
         outcomes: []
       }
     },
@@ -1617,31 +1732,16 @@ var SITE = {
       }
     },
     {
-      id: "ten-tv",
-      category: "visual",
-      image: "assets/images/projects/ten-tv.webp",
-    imageType: "generated",
-      years: "2014 – 2015",
-      organization: "قناة TEN",
-      role: "ستايلست",
-      title: "قناة TEN — تنسيق الأزياء",
-      summary: "عمل مبكر في تنسيق الأزياء ضمن فريق قناة TEN.",
-      scope: ["العمل كستايلست خلال الفترة المذكورة في السيرة."],
-      outcomes: [],
-      links: [],
-      en: {
-        years: "2014 – 2015",
-        organization: "TEN TV",
-        title: "TEN TV — Styling",
-        summary: "Early styling work with the TEN TV team.",
-        role: "Stylist",
-        scope: ["Worked as a stylist during the period listed in the CV."],
-        outcomes: []
-      }
-    },
-    {
       id: "delta-festival",
       category: "community",
+      image: "assets/images/projects/delta-festival.webp",
+      gallery: projectGallery(
+        ["delta-festival (2).webp", "delta-festival (3).webp", "delta-festival (4).webp"],
+        "صورة من فعالية Delta Little Queen Festival",
+        "Image from the Delta Little Queen Festival",
+        "توثيق مرئي لفعالية Delta Little Queen Festival",
+        "Visual documentation of the Delta Little Queen Festival"
+      ),
       years: "2018",
       organization: "مهرجان Delta Little Queen · المنصورة",
       role: "مديرة المهرجان",
